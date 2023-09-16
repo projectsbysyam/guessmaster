@@ -28,8 +28,8 @@
                         <li class="active">
                             <a href="#Dashboard" class="has-arrow"><i class=" icon-users"></i> <span>Customer</span></a>
                             <ul>
-                                <li><a href="index.html">Agent</a></li>                                    
-                                <li><a href="index2.html">Dealer</a></li>
+                                <li><a href="{% url 'adminapp:agent' %}">Agent</a></li>                                    
+                                <li><a href="{% url 'adminapp:dealer' %}">Dealer</a></li>
                                 
                             </ul>
                         </li>
@@ -38,7 +38,7 @@
                         
                         </li>
                         <li>
-                            <a href="#FileManager" ><i class=" icon-refresh"></i> <span>Change Game</span></a>
+                            <a href="{% url 'adminapp:changegame' %}" ><i class=" icon-refresh"></i> <span>Change Game</span></a>
                           
                         </li>
                         <li>
