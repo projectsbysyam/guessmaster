@@ -1,8 +1,22 @@
 {% extends 'adminapp/partials/base.html' %}
 {% load static %}
 {% block content %}
+
 <div id="main-content">
     <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-lg-5 col-md-8 col-sm-12">                        
+                    <h2><a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth"></a>  <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'adminapp:index' %}" ><i class="icon-home"></i></a></li>                            
+                        <li class="breadcrumb-item"><a href="{% url 'adminapp:agent' %}" ></a>Agent</li>
+                        <li class="breadcrumb-item">Add Agent</li>
+                    </ul></h2>
+                   
+                </div>            
+              
+            </div>
+        </div>
 <div class="row clearfix">
     <div class="col-md-12">
         <div class="card">
