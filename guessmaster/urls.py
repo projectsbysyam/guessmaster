@@ -23,6 +23,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('adminapp/',include('adminapp.urls')),
     path('',include('website.urls')),
-    path('agent',include('agent.urls')),
+    path('agent/',include('agent.urls')),
     path('dealer/',include('dealer.urls')),
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
