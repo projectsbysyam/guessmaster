@@ -26,15 +26,37 @@
 <link rel="stylesheet" href="{% static 'css/color_skins.css' %}">
 </head>
 <body class="theme-cyan">
+  <!-- Page Loader -->
+  <div class="page-loader-wrapper">
+    <div class="loader">
+        <div class="m-t-30"><img src="{% static 'images/logo-icon.svg' %}" width="48" height="48" alt="Lucid"></div>
+        <p>Please wait...</p>        
+    </div>
+</div>
+<!-- Overlay For Sidebars -->
 
+<div id="wrapper">
 
     {% include 'agent/partials/header.html' %}
-    
+    {% include 'agent/partials/sidebar.html' %}
+
     {% block content %}
 
     {% endblock %}
-    
-    {% include 'agent/partials/footer.html' %}
+
+</div>
+
+<!-- Javascript -->
+<script src="{% static 'bundles/libscripts.bundle.js' %}"></script>    
+<script src="{% static 'bundles/vendorscripts.bundle.js' %}"></script>
+
+<script src="{% static 'bundles/jvectormap.bundle.js' %}"></script> <!-- JVectorMap Plugin Js -->
+<script src="{% static 'bundles/chartist.bundle.js' %}"></script>
+<script src="{% static 'bundles/datatablescripts.bundle.js' %}"></script>
+
+<script src="{% static 'bundles/mainscripts.bundle.js' %}"></script>
+<script src="{% static 'js/pages/tables/jquery-datatable.js' %}"></script>
+<script src="{% static 'js/index7.js' %}"></script>
 
 </body>
 
