@@ -41,3 +41,7 @@ def login(request):
         else:
             messages.info(request, "Invalid Credentials")
     return render(request,'website/login.html')
+
+def logout_view(request):
+    logout(request)
+    return redirect("website:login")
