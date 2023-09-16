@@ -8,6 +8,9 @@ def index(request):
 def agent(request):
     return render(request,'adminapp/customer/agent.html')
 
+def addagent(request):
+    return render(request,'adminapp/customer/addagent.html')
+
 def dealer(request):
     return render(request,'adminapp/customer/dealer.html')
 
