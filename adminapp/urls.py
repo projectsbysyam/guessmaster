@@ -6,9 +6,7 @@ app_name = 'adminapp'
 urlpatterns = [
     path('index',views.index,name="index"),
     path('agent',views.agent,name="agent"),
-    path('addagent',views.addagent,name="addagent"),
+    path('add-agent',views.add_agent,name="add_agent"),
     path('dealer',views.dealer,name="dealer"),
-    path('changegame',views.changegame,name="changegame"),
-
-
+    path('change-game',views.change_game,name="changegame"),
 ]
