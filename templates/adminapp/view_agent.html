@@ -39,7 +39,7 @@
                         <th>Agent Name</th>                                    
                         <th>Phone</th> 
                         <th>Username</th>                                   
-                        <th>package</th>
+                        <th>Package</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -64,11 +64,16 @@
                         <td>
                             <address><i class="zmdi zmdi-pin"></i> FL 32904</address>
                         </td>
-                        <td>       
-                            <button  type="button" class="btn btn-warning" title="Ban"> <i class="fa fa-ban"></i></button>
-
-                            <button type="button" class="btn btn-info" title="Edit"><i class="fa fa-edit"></i></button>
-                            <button type="button" data-type="confirm" class="btn btn-danger js-sweetalert" title="Delete"><i class="fa fa-trash-o"></i></button>
+                        <td>
+                            {% if agent.user.is_active %}      
+                            <button  type="button" onclick="agentBan(('{{ agent.id }}'))" class="btn btn-warning" title="Ban"> <i class="fa fa-ban"></i></button>
+                            {% else %}
+                            <button  type="button" onclick="removeBan(('{{ agent.id }}'))" class="btn btn-warning" title="Remove Ban"> <i class="fa fa-check"></i></button>
+                            {% endif %}
+                            <a href="your_link_here" class="btn btn-info" title="Edit">
+                                <i class="fa fa-edit"></i>
+                            </a>
+                            <button type="button" onclick="agentDelete(('{{ agent.id }}'))" data-type="confirm" class="btn btn-danger js-sweetalert" title="Delete"><i class="fa fa-trash-o"></i></button>
                         </td>
                     </tr>
                     {% endfor %}
@@ -82,6 +87,81 @@
 </div>
 </div>
 
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    function agentDelete(id) {
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this user!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    swal("Poof! This user has been deleted!", {
+                        icon: "success",
+                    });
+                    setTimeout(function () {
+                        window.location.href = "/adminapp/delete-agent/" + id
+                    }, 1000);
+                } else {
+                    swal("It is safe!");
+                }
+            });
+    }
 
+
+</script>
+
+<script>
+    function agentBan(id) {
+        swal({
+            title: "Are you sure?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    swal("This user has been banned!", {
+                        icon: "success",
+                    });
+                    setTimeout(function () {
+                        window.location.href = "/adminapp/ban-agent/" + id
+                    }, 1000);
+                } else {
+                    swal("It is safe!");
+                }
+            });
+    }
+
+
+</script>
+
+<script>
+    function removeBan(id) {
+        swal({
+            title: "Are you sure?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    swal("This user's ban removed!", {
+                        icon: "success",
+                    });
+                    setTimeout(function () {
+                        window.location.href = "/adminapp/remove-ban/" + id
+                    }, 1000);
+                } else {
+                    swal("It is safe!");
+                }
+            });
+    }
+
+
+</script>
 
 {% endblock %}
