@@ -48,9 +48,9 @@ def monitor(request):
 def results(request):
     return render(request,'adminapp/results.html')
 
-def daily_report(request):
+def dailyreport(request):
     return render(request,'adminapp/dailyreport.html')
 
-def change_password(request):
+def changepassword(request):
     return render(request,'adminapp/changepassword.html')
 
