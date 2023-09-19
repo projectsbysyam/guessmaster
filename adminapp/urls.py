@@ -9,4 +9,9 @@ urlpatterns = [
     path('add-agent',views.add_agent,name="add_agent"),
     path('dealer',views.dealer,name="dealer"),
     path('change-game',views.change_game,name="changegame"),
+    path('monitor',views.monitor,name="monitor"),
+    path('results',views.results,name="results"),
+    path('dailyreport',views.daily_report,name="dailyreport"),
+    path('changepassword',views.change_password,name="changepassword"),
+
 ]
