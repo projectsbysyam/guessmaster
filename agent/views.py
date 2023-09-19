@@ -2,11 +2,12 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from website.forms import LoginForm
 from website.forms import DealerRegistration
-from website.models import User
+from website.models import User,Dealer
 from django.contrib import messages
 from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
+@login_required
 def index(request):
     return render(request,"agent/index.html")
 
@@ -28,5 +29,12 @@ def add_dealer(request):
             c.user = user
             c.save()
             messages.info(request, "dealer Created Successfully")
-            return redirect("adminapp:index")
-    return render(request,'adminapp/add_dealer.html',{"login_form": login_form, "dealer_form": dealer_form})
+            return redirect("agent:index")
+    return render(request,'agent/add_dealer.html',{"login_form": login_form, "dealer_form": dealer_form})
+
+def view_dealer(request):
+    dealers = Dealer.objects.filter().all()
+    context = {
+        'dealers' : dealers
+    }
+    return render(request,'agent/view_dealer.html',context)

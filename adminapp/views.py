@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from website.forms import LoginForm
 from website.forms import AgentRegistration
-from website.models import User
+from website.models import User,Agent
 from django.contrib import messages
 from django.views.decorators.csrf import csrf_exempt
 
@@ -36,8 +36,12 @@ def add_agent(request):
             return redirect("adminapp:index")
     return render(request,'adminapp/add_agent.html',{"login_form": login_form, "agent_form": agent_form})
 
-# def dealer(request):
-#     return render(request,'adminapp/customer/dealer.html')
+def view_agent(request):
+    agents = Agent.objects.filter().all()
+    context = {
+        'agents' : agents
+    }
+    return render(request,'adminapp/view_agent.html',context)
 
 def change_game(request):
     return render(request,'adminapp/changegame.html')
@@ -52,5 +56,5 @@ def daily_report(request):
     return render(request,'adminapp/dailyreport.html')
 
 def change_password(request):
-    return render(request,'adminapp/changepassword.html')
+    return render(request,'adminapp/change_password.html')
 
