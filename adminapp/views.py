@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib.auth.decorators import login_required
 from website.forms import LoginForm
 from website.forms import AgentRegistration
@@ -42,6 +42,25 @@ def view_agent(request):
         'agents' : agents
     }
     return render(request,'adminapp/view_agent.html',context)
+
+def delete_agent(request,id):
+    agent = Agent.objects.get(id=id)
+    agent.delete()
+    return redirect('adminapp:view_agent')
+
+def ban_agent(request,id):
+    agent = get_object_or_404(Agent, id=id)
+    user = agent.user
+    user.is_active = False
+    user.save()
+    return redirect('adminapp:view_agent')
+
+def remove_ban(request,id):
+    agent = get_object_or_404(Agent, id=id)
+    user = agent.user
+    user.is_active = True
+    user.save()
+    return redirect('adminapp:view_agent')
 
 def change_game(request):
     return render(request,'adminapp/changegame.html')

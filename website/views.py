@@ -25,21 +25,22 @@ def login(request):
 
         user = authenticate(request, username=username, password=password)
 
-        if user is None:
-            messages.success(request, "Wrong Paasword")
-            return redirect("/")
-
-        if user:
-            auth_login(request,user)
-
-            if user.is_staff:
-                return redirect("adminapp:index")
-            elif user.is_agent:
-                return redirect("agent:index")
-            elif user.is_dealer:
-                return redirect("dealer:index")
+        if user_obj.is_active:
+            if user:
+                if user.is_active:
+                    auth_login(request, user)
+                    if user.is_staff:
+                        return redirect("adminapp:index")
+                    elif user.is_agent:
+                        return redirect("agent:index")
+                    elif user.is_dealer:
+                        return redirect("dealer:index")
+                else:
+                    messages.success(request, "Wrong Password")
+            else:
+                messages.success(request, "Wrong Password")
         else:
-            messages.info(request, "Invalid Credentials")
+            messages.success(request, "Your account is not active. Contact the admin for assistance.")
     return render(request,'website/login.html')
 
 def logout_view(request):
