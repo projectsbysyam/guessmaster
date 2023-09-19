@@ -17,5 +17,16 @@ def dealer(request):
 def changegame(request):
     return render(request,'adminapp/changegame.html')
 
+def monitor(request):
+    return render(request,'adminapp/monitor.html')
+
+def results(request):
+    return render(request,'adminapp/results.html')
+
+def dailyreport(request):
+    return render(request,'adminapp/dailyreport.html')
+
+def changepassword(request):
+    return render(request,'adminapp/changepassword.html')
 
 

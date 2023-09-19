@@ -9,6 +9,11 @@ urlpatterns = [
     path('addagent',views.addagent,name="addagent"),
     path('dealer',views.dealer,name="dealer"),
     path('changegame',views.changegame,name="changegame"),
+    path('monitor',views.monitor,name="monitor"),
+    path('results',views.results,name="results"),
+    path('dailyreport',views.dailyreport,name="dailyreport"),
+    path('changepassword',views.changepassword,name="changepassword"),
+
 
 
 ]
