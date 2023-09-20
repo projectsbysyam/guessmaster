@@ -21,15 +21,15 @@ def add_dealer(request):
         print(dealer_form)
         print(login_form)
         if login_form.is_valid() and dealer_form.is_valid():
-            print("loginform is not working")
+            print("loginform is working")
             user = login_form.save(commit=False)
             user.is_dealer = True
             user.save()
             c = dealer_form.save(commit=False)
             c.user = user
             c.save()
-            messages.info(request, "dealer Created Successfully")
-            return redirect("agent:index")
+            messages.info(request, "Dealer Created Successfully")
+            return redirect("agent:view_dealer")
     return render(request,'agent/add_dealer.html',{"login_form": login_form, "dealer_form": dealer_form})
 
 def view_dealer(request):
