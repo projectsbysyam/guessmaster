@@ -65,10 +65,15 @@
                             <address><i class="zmdi zmdi-pin"></i> FL 32904</address>
                         </td>
                         <td>       
-                            <button  type="button" class="btn btn-warning" title="Ban"> <i class="fa fa-ban"></i></button>
-
-                            <button type="button" class="btn btn-info" title="Edit"><i class="fa fa-edit"></i></button>
-                            <button type="button" data-type="confirm" class="btn btn-danger js-sweetalert" title="Delete"><i class="fa fa-trash-o"></i></button>
+                            {% if dealer.user.is_active %}      
+                            <button  type="button" onclick="dealerBan(('{{ dealer.id }}'))" class="btn btn-warning" title="Ban"> <i class="fa fa-ban"></i></button>
+                            {% else %}
+                            <button  type="button" onclick="removeBan(('{{ dealer.id }}'))" class="btn btn-warning" title="Remove Ban"> <i class="fa fa-check"></i></button>
+                            {% endif %}
+                            <a href="{% url 'agent:edit_dealer' dealer.id %}" class="btn btn-info" title="Edit">
+                                <i class="fa fa-edit"></i>
+                            </a>
+                            <button type="button" onclick="dealerDelete(('{{ dealer.id }}'))" data-type="confirm" class="btn btn-danger js-sweetalert" title="Delete"><i class="fa fa-trash-o"></i></button>
                         </td>
                     </tr>
                     {% endfor %}
@@ -82,6 +87,83 @@
 </div>
 </div>
 
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script>
+    function dealerDelete(id) {
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this user!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    swal("Poof! This user has been deleted!", {
+                        icon: "success",
+                    });
+                    setTimeout(function () {
+                        window.location.href = "/agent/delete-dealer/" + id
+                    }, 1000);
+                } else {
+                    swal("It is safe!");
+                }
+            });
+    }
+
+
+</script>
+
+<script>
+    function dealerBan(id) {
+        swal({
+            title: "Are you sure?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    swal("This user has been banned!", {
+                        icon: "success",
+                    });
+                    setTimeout(function () {
+                        window.location.href = "/agent/ban-dealer/" + id
+                    }, 1000);
+                } else {
+                    swal("It is safe!");
+                }
+            });
+    }
+
+
+</script>
+
+<script>
+    function removeBan(id) {
+        swal({
+            title: "Are you sure?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    swal("This user's ban removed!", {
+                        icon: "success",
+                    });
+                    setTimeout(function () {
+                        window.location.href = "/agent/remove-ban/" + id
+                    }, 1000);
+                } else {
+                    swal("It is safe!");
+                }
+            });
+    }
+
+
+</script>
 
 
 {% endblock %}

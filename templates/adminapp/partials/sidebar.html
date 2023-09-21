@@ -2,7 +2,6 @@
 <div id="left-sidebar" class="sidebar">
     <div class="sidebar-scroll">
         <div class="user-account">
-            <img src="{% static 'images/user.png' %}" class="rounded-circle user-photo" alt="User Profile Picture">
             <div class="dropdown">
                 <span>Welcome,</span>
                 <a href="javascript:void(0);" class="dropdown-toggle user-name" data-toggle="dropdown"><strong>{{request.user}}</strong></a>
@@ -78,7 +77,7 @@
                         </li>
                         
                         <li>
-                            <a href="{% url 'adminapp:change_password' %}" ><i class="icon-note"></i> <span>Change Paasword</span></a>
+                            <a href="" ><i class="icon-note"></i> <span>Change Paasword</span></a>
                            
                         </li>
                        

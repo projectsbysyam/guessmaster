@@ -17,6 +17,7 @@ class Agent(models.Model):
     
 class Dealer(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE,related_name="dealer")
+    agent = models.ForeignKey(Agent,on_delete=models.CASCADE,null=True)
     dealer_name = models.CharField(max_length=100)
     phone_number = models.CharField(max_length=100)
 
