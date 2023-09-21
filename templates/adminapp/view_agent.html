@@ -70,7 +70,7 @@
                             {% else %}
                             <button  type="button" onclick="removeBan(('{{ agent.id }}'))" class="btn btn-warning" title="Remove Ban"> <i class="fa fa-check"></i></button>
                             {% endif %}
-                            <a href="your_link_here" class="btn btn-info" title="Edit">
+                            <a href="{% url 'adminapp:edit_agent' agent.id %}" class="btn btn-info" title="Edit">
                                 <i class="fa fa-edit"></i>
                             </a>
                             <button type="button" onclick="agentDelete(('{{ agent.id }}'))" data-type="confirm" class="btn btn-danger js-sweetalert" title="Delete"><i class="fa fa-trash-o"></i></button>
