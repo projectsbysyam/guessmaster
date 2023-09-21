@@ -64,9 +64,12 @@ def delete_agent(request,id):
     agent = get_object_or_404(Agent, id=id)
     agent_user = agent.user
     dealers = Dealer.objects.filter(agent=agent)
-    for dealer in dealers:
-        dealer_user = dealer.user
-        dealer_user.delete()
+    try:
+        for dealer in dealers:
+            dealer_user = dealer.user
+            dealer_user.delete()
+    except:
+        pass
     agent_user.delete()
     return redirect('adminapp:view_agent')
 
@@ -76,11 +79,14 @@ def ban_agent(request,id):
     user.is_active = False
     user.save()
     dealers = Dealer.objects.filter(agent=agent)
-    for dealer in dealers:
-        dealer_user = dealer.user
-        dealer_user.is_active = False
-        dealer_user.save()
-        print(dealer_user.is_active)
+    try:
+        for dealer in dealers:
+            dealer_user = dealer.user
+            dealer_user.is_active = False
+            dealer_user.save()
+            print(dealer_user.is_active)
+    except:
+        pass
     return redirect('adminapp:view_agent')
 
 def remove_ban(request,id):
@@ -89,11 +95,14 @@ def remove_ban(request,id):
     user.is_active = True
     user.save()
     dealers = Dealer.objects.filter(agent=agent)
-    for dealer in dealers:
-        dealer_user = dealer.user
-        dealer_user.is_active = True
-        dealer_user.save()
-        print(dealer_user.is_active)
+    try:
+        for dealer in dealers:
+            dealer_user = dealer.user
+            dealer_user.is_active = True
+            dealer_user.save()
+            print(dealer_user.is_active)
+    except:
+        pass
     return redirect('adminapp:view_agent')
 
 def package(request):
