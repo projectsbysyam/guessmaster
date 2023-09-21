@@ -39,9 +39,18 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#App" class="has-arrow"><i class=" icon-bag"></i> <span></span>Package</a>
-                        
+                            <a href="{% url 'adminapp:create_winningprice' %}" ><i class=" icon-refresh"></i> <span>Create Winning Price</span></a>
+                          
                         </li>
+                        <li>
+                            <a href="#Dashboard" class="has-arrow"><i class=" icon-users"></i> <span>Package</span></a>
+                            <ul>
+                                <li><a href="{% url 'adminapp:package' %}">package</a></li>                                    
+                                <li><a href="{% url 'adminapp:new_package' %}">New Package</a></li>
+                                
+                            </ul>
+                        </li>
+                      
                         <li>
                             <a href="{% url 'adminapp:changegame' %}" ><i class=" icon-refresh"></i> <span>Change Game</span></a>
                           
@@ -59,7 +68,7 @@
                             <ul>
                                 <!-- <li><a href="ui-typography.html">Customer</a></li> -->
                                 
-                                <li><a href="ui-buttons.html">Sales report</a></li>
+                                <li><a href="{% url 'adminapp:sales_report' %}">Sales report</a></li>
                                 <li><a href="ui-bootstrap.html"> Count Wise Report</a></li>
                                 <li><a href="ui-icons.html">Count Sales Report</a></li>
                                 <li><a href="ui-notifications.html">Winning Report</a></li>
@@ -68,7 +77,7 @@
                                 <li><a href="ui-colors.html">Blocked Numbers</a></li>                                   
                                 <li><a href="ui-list-group.html">Edit Bill</a></li>
                                
-                                <li><a href="ui-media-object.html">Settings</a></li>
+                                
                            
                             </ul>
                         </li>
@@ -81,6 +90,7 @@
                             <a href="{% url 'adminapp:change_password' %}" ><i class="icon-note"></i> <span>Change Paasword</span></a>
                            
                         </li>
+                        <li><a href="ui-media-object.html">Settings</a></li>
                        
                      
                     </ul>

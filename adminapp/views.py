@@ -62,6 +62,20 @@ def remove_ban(request,id):
     user.save()
     return redirect('adminapp:view_agent')
 
+def package(request):
+    return render(request,'adminapp/package.html')
+
+def new_package(request):
+    return render(request,'adminapp/new_package.html')
+
+def create_winningprice(request):
+    return render(request,'adminapp/create_winningprice.html')
+
+
+def sales_report(request):
+    return render(request,'adminapp/sales_report.html')
+
+
 def change_game(request):
     return render(request,'adminapp/changegame.html')
 
