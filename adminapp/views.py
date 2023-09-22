@@ -125,15 +125,19 @@ def sales_report(request):
 
 def add_time(request):
     if request.method == 'POST':
-        new_time = request.POST.get('new_time')
-        print(new_time)
-        set_time = PlayTime.objects.create(time=new_time)
+        start_time = request.POST.get('start_time')
+        print(start_time)
+        end_time = request.POST.get('end_time')
+        set_time = PlayTime.objects.create(start_time=start_time,end_time=end_time)
         set_time.save()
         return redirect('adminapp:change_time')
     return render(request,'adminapp/add_time.html')
 
 def change_time(request):
-    times = PlayTime.objects.filter().all()
+    try:
+        times = PlayTime.objects.filter().all()
+    except:
+        pass
     context = {
         'times' : times
     }
@@ -143,9 +147,11 @@ def change_game_time(request,id):
     time = get_object_or_404(PlayTime,id=id)
     print(time)
     if request.method == 'POST':
-        new_time = request.POST.get('new_time')
-        print(new_time)
-        set_time = PlayTime.objects.filter(id=id).update(time=new_time)
+        start_time = request.POST.get('start_time')
+        print(start_time)
+        end_time = request.POST.get('end_time')
+        print(end_time)
+        set_time = PlayTime.objects.filter(id=id).update(start_time=start_time,end_time=end_time)
         return redirect('adminapp:change_time')
     return render(request,'adminapp/change_game_time.html')
 

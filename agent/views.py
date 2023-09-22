@@ -14,23 +14,20 @@ from pytz import timezone as pytz_timezone
 @login_required
 @agent_required
 def index(request):
-    times = PlayTime.objects.filter().all()
     ist = pytz_timezone('Asia/Kolkata')
     current_time = timezone.now().astimezone(ist).time()
     print(current_time)
-    game_times = [time.time for time in PlayTime.objects.all()]
-    print(game_times)
-    one_hour_before_times = [(t.replace(hour=t.hour - 1) if t.hour > 0 else t.replace(hour=23, minute=0)) for t in game_times]
-    print(one_hour_before_times)
-    available_games = []
-    for game_time, one_hour_before in zip(game_times, one_hour_before_times):
-        if current_time >= one_hour_before:
-            available_games.append(game_time)
-    print("Hiiii")
+    play_times = PlayTime.objects.filter().all()
+    play_time_availabilities = []
+    for time in play_times:
+        if time.start_time <= current_time <= time.end_time:
+            play_time_availabilities.append(True)
+        else:
+            play_time_availabilities.append(False)
+    zipped_play_times = zip(play_times, play_time_availabilities)
     context = {
-        'times' : times,
-        'current_time' : current_time,
-        'game_available' : available_games
+        'play_times': play_times,
+        'zipped_play_times': zipped_play_times,
     }
     return render(request,"agent/index.html",context)
 
