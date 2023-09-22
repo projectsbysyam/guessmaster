@@ -15,24 +15,47 @@
         </div>
 
         <div class="row clearfix">
-            {% for time in times %}
+            {% for time, is_available in zipped_play_times %}
+            {% if is_available %}
             <div class="col-lg-3 col-md-12">
+                <a href="#availbale">
                 <div class="card top_counter currency_state">
                     <div class="body">
                         <div class="icon"><img src="{% static 'images/coin/neo.svg' %}" width="35" /></div>
                         <div class="content">
-                            <div class="text">Bitcoin</div>
-                            <h5 class="number">{{ time.time }}</h5>
-                            {% if time.time in game_available %}
+                            <h5 class="number">{{ time.end_time }}</h5>
+                            {% if is_available %}
                             <p>Game is available!</p>
                             {% else %}
-                            <p>Game is not available yet.</p>
+                            <p>Game is not available.</p>
                             {% endif %}
                         </div>
                     </div>
                 </div>
+                </a>
             </div>
+            {% else %}
+            <div class="col-lg-3 col-md-12">
+                <a href="#" onclick="noGame()" data-type="confirm" class="js-sweetalert">
+                <div class="card top_counter currency_state">
+                    <div class="body">
+                        <div class="icon"><img src="{% static 'images/coin/neo.svg' %}" width="35" /></div>
+                        <div class="content">
+                            <h5 class="number">{{ time.end_time }}</h5>
+                            {% if is_available %}
+                            <p>Game is available!</p>
+                            {% else %}
+                            <p>Game is not available.</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </a>
+            </div>
+            {% endif %}
             {% endfor %}
+
+
 
         </div>
 
@@ -429,6 +452,21 @@
 
     </div>
 </div>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    function noGame() {
+        swal({
+            title: "Game is not available?",
+            text: "You can't play on this time!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+    }
+
+
+</script>
 
 
 {% endblock %}
