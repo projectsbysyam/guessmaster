@@ -26,6 +26,7 @@ def index(request):
     for game_time, one_hour_before in zip(game_times, one_hour_before_times):
         if current_time >= one_hour_before:
             available_games.append(game_time)
+    print("Hiiii")
     context = {
         'times' : times,
         'current_time' : current_time,
