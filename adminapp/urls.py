@@ -22,6 +22,4 @@ urlpatterns = [
     path('change-game-time/<int:id>',views.change_game_time,name="change_game_time"),
     path('monitor',views.monitor,name="monitor"),
     path('dailyreport',views.daily_report,name="dailyreport"),
-    path('change-password',views.change_password,name="change_password"),
-    path('settings',views.settings,name="settings"),
 ]

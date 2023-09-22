@@ -123,30 +123,31 @@ def add_result(request):
 def sales_report(request):
     return render(request,'adminapp/sales_report.html')
 
-def countwise_report(request):
-    return render(request,'adminapp/countwise_report.html') 
+def add_time(request):
+    if request.method == 'POST':
+        new_time = request.POST.get('new_time')
+        print(new_time)
+        set_time = PlayTime.objects.create(time=new_time)
+        set_time.save()
+        return redirect('adminapp:change_time')
+    return render(request,'adminapp/add_time.html')
 
-def countsales_report(request):
-    return render(request,'adminapp/countsales_report.html')
+def change_time(request):
+    times = PlayTime.objects.filter().all()
+    context = {
+        'times' : times
+    }
+    return render(request,'adminapp/change_time.html',context)
 
-def winning_report(request):
-    return render(request,'adminapp/winning_report.html')
-
-
-def winningcount_report(request):
-    return render(request,'adminapp/winningcount_report.html')
-
-def blocked_numbers(request):
-    return render(request,'adminapp/blocked_numbers.html')
-
-def change_game(request):
-    return render(request,'adminapp/changegame.html')
-
-def change_password(request):
-    return render(request,'adminapp/change_password.html')
-
-def edit_bill(request):
-    return render(request,'adminapp/edit_bill.html')
+def change_game_time(request,id):
+    time = get_object_or_404(PlayTime,id=id)
+    print(time)
+    if request.method == 'POST':
+        new_time = request.POST.get('new_time')
+        print(new_time)
+        set_time = PlayTime.objects.filter(id=id).update(time=new_time)
+        return redirect('adminapp:change_time')
+    return render(request,'adminapp/change_game_time.html')
 
 def monitor(request):
     return render(request,'adminapp/monitor.html')
@@ -154,9 +155,5 @@ def monitor(request):
 def results(request):
     return render(request,'adminapp/results.html')
 
-def settings(request):
-    return render(request,'adminapp/settings.html')
-
 def daily_report(request):
     return render(request,'adminapp/dailyreport.html')
-
