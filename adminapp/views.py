@@ -127,7 +127,7 @@ def add_time(request):
     if request.method == 'POST':
         new_time = request.POST.get('new_time')
         print(new_time)
-        set_time = PlayTime.objects.create(time=new_time)
+        set_time = PlayTime.objects.create()
         set_time.save()
         return redirect('adminapp:change_time')
     return render(request,'adminapp/add_time.html')
@@ -145,7 +145,7 @@ def change_game_time(request,id):
     if request.method == 'POST':
         new_time = request.POST.get('new_time')
         print(new_time)
-        set_time = PlayTime.objects.filter(id=id).update(time=new_time)
+        set_time = PlayTime.objects.filter(id=id).update()
         return redirect('adminapp:change_time')
     return render(request,'adminapp/change_game_time.html')
 
@@ -157,3 +157,30 @@ def results(request):
 
 def daily_report(request):
     return render(request,'adminapp/dailyreport.html')
+
+def countwise_report(request):
+    return render(request,'adminapp/countwise_report.html')
+
+def countsales_report(request):
+    return render(request,'adminapp/countsales_report.html') 
+
+def winning_report(request):
+    return render(request,'adminapp/winning_report.html') 
+
+def winningcount_report(request):
+    return render(request,'adminapp/winningcount_report.html')
+
+def blocked_numbers(request):
+    return render(request,'adminapp/blocked_numbers.html')
+
+def edit_bill(request):
+    return render(request,'adminapp/edit_bill.html')
+
+def payment_report(request):
+    return render(request,'adminapp/payment_report.html')
+
+def change_password(request):
+    return render(request,'adminapp/change_password.html')
+def settings(request):
+    return render(request,'adminapp/settings.html')
+

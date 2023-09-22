@@ -22,4 +22,19 @@ urlpatterns = [
     path('change-game-time/<int:id>',views.change_game_time,name="change_game_time"),
     path('monitor',views.monitor,name="monitor"),
     path('dailyreport',views.daily_report,name="dailyreport"),
+    path('countwise-report',views.countwise_report,name="countwise_report"),
+    path('countsales-eport',views.countsales_report,name="countsales_report"),
+    path('winning_report',views.winning_report,name="winning_report"),
+    path('winningcount-report',views.winningcount_report,name="winningcount_report"),
+    path('blocked_numbers',views.blocked_numbers,name="blocked_numbers"),
+    path('edit_bill',views.edit_bill,name="edit_bill"),
+    path('payment_report',views.payment_report,name="payment_report"),
+    path('change_password',views.change_password,name="change_password"),
+    path('settings',views.settings,name="settings"),
+
+
+
+    
+
+
 ]
