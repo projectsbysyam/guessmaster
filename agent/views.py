@@ -101,3 +101,6 @@ def remove_ban(request,id):
     user.is_active = True
     user.save()
     return redirect('agent:view_dealer')
+
+def booking(request):
+    return render(request,'agent/booking.html')

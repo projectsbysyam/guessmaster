@@ -4,6 +4,8 @@ from django.urls import path
 app_name = 'adminapp'
 
 urlpatterns = [
+
+    
     path('index',views.index,name="index"),
     path('agent',views.agent,name="agent"),
     path('add-agent',views.add_agent,name="add_agent"),
