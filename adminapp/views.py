@@ -157,3 +157,30 @@ def results(request):
 
 def daily_report(request):
     return render(request,'adminapp/dailyreport.html')
+
+def countwise_report(request):
+    return render(request,'adminapp/countwise_report.html')
+
+def countsales_report(request):
+    return render(request,'adminapp/countsales_report.html') 
+
+def winning_report(request):
+    return render(request,'adminapp/winning_report.html') 
+
+def winningcount_report(request):
+    return render(request,'adminapp/winningcount_report.html')
+
+def blocked_numbers(request):
+    return render(request,'adminapp/blocked_numbers.html')
+
+def edit_bill(request):
+    return render(request,'adminapp/edit_bill.html')
+
+def payment_report(request):
+    return render(request,'adminapp/payment_report.html')
+
+def change_password(request):
+    return render(request,'adminapp/change_password.html')
+def settings(request):
+    return render(request,'adminapp/settings.html')
+
