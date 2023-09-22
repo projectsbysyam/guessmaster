@@ -1,0 +1,43 @@
+{% extends 'adminapp/partials/base.html' %}
+{% load static %}
+{% block content %}
+
+
+<div id="main-content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-lg-5 col-md-8 col-sm-12">                        
+                    <h2><a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth"><i class="fa fa-arrow-left"></i></a>Change Game Time</h2>
+                </div>            
+                
+            </div>
+        </div>
+
+        <div class="row clearfix">
+            {% for time in times %}
+            <div class="col-lg-3 col-md-12">
+                <a href="{% url 'adminapp:change_game_time' time.id %}">
+                <div class="card text-center bg-primary">
+                    <div class="body">
+                        <div class="p-15 text-light">
+                            <h3>{{time.time}}</h3>
+                        </div>
+                    </div>
+                </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+        
+       
+
+
+                   
+        
+    </div>
+</div>
+
+
+
+{% endblock %}

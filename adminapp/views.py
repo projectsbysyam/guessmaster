@@ -4,6 +4,7 @@ from website.decorators import dealer_required, agent_required, admin_required
 from website.forms import LoginForm,UserUpdateForm
 from website.forms import AgentRegistration
 from website.models import User,Agent,Dealer
+from .models import PlayTime
 from django.contrib import messages
 from django.views.decorators.csrf import csrf_exempt
 
@@ -105,8 +106,49 @@ def remove_ban(request,id):
         pass
     return redirect('adminapp:view_agent')
 
-def change_game(request):
-    return render(request,'adminapp/changegame.html')
+def package(request):
+    return render(request,'adminapp/package.html')
+
+def new_package(request):
+    return render(request,'adminapp/new_package.html')
+
+def add_result(request):
+    timings = PlayTime.objects.filter().all()
+    print(timings)
+    context = {
+        'timings' : timings
+    }
+    return render(request,'adminapp/add_result.html',context)
+
+
+def sales_report(request):
+    return render(request,'adminapp/sales_report.html')
+
+def add_time(request):
+    if request.method == 'POST':
+        new_time = request.POST.get('new_time')
+        print(new_time)
+        set_time = PlayTime.objects.create(time=new_time)
+        set_time.save()
+        return redirect('adminapp:change_time')
+    return render(request,'adminapp/add_time.html')
+
+def change_time(request):
+    times = PlayTime.objects.filter().all()
+    context = {
+        'times' : times
+    }
+    return render(request,'adminapp/change_time.html',context)
+
+def change_game_time(request,id):
+    time = get_object_or_404(PlayTime,id=id)
+    print(time)
+    if request.method == 'POST':
+        new_time = request.POST.get('new_time')
+        print(new_time)
+        set_time = PlayTime.objects.filter(id=id).update(time=new_time)
+        return redirect('adminapp:change_time')
+    return render(request,'adminapp/change_game_time.html')
 
 def monitor(request):
     return render(request,'adminapp/monitor.html')
