@@ -7,13 +7,31 @@ from adminapp.models import PlayTime
 from django.contrib import messages
 from django.views.decorators.csrf import csrf_exempt
 from website.decorators import dealer_required, agent_required
+from django.utils import timezone
+from pytz import timezone as pytz_timezone
 
 # Create your views here.
 @login_required
 @agent_required
 def index(request):
-    
-    return render(request,"agent/index.html")
+    times = PlayTime.objects.filter().all()
+    ist = pytz_timezone('Asia/Kolkata')
+    current_time = timezone.now().astimezone(ist).time()
+    print(current_time)
+    game_times = [time.time for time in PlayTime.objects.all()]
+    print(game_times)
+    one_hour_before_times = [(t.replace(hour=t.hour - 1) if t.hour > 0 else t.replace(hour=23, minute=0)) for t in game_times]
+    print(one_hour_before_times)
+    available_games = []
+    for game_time, one_hour_before in zip(game_times, one_hour_before_times):
+        if current_time >= one_hour_before:
+            available_games.append(game_time)
+    context = {
+        'times' : times,
+        'current_time' : current_time,
+        'game_available' : available_games
+    }
+    return render(request,"agent/index.html",context)
 
 @csrf_exempt
 def add_dealer(request):
