@@ -68,13 +68,14 @@
                                 <!-- <li><a href="ui-typography.html">Customer</a></li> -->
                                 
                                 <li><a href="{% url 'adminapp:sales_report' %}">Sales report</a></li>
-                                <li><a href="ui-bootstrap.html"> Count Wise Report</a></li>
-                                <li><a href="ui-icons.html">Count Sales Report</a></li>
-                                <li><a href="ui-notifications.html">Winning Report</a></li>
+                                <li><a href="{% url 'adminapp:countwise_report' %}"> Count Wise Report</a></li>
+                                <li><a href="{% url 'adminapp:countsales_report' %}">Count Sale Report</a></li>
+                                <li><a href="{% url 'adminapp:winning_report' %}">Winning Report</a></li>
 
-                                <li><a href="ui-dialogs.html">Count Winning Report</a></li> 
-                                <li><a href="ui-colors.html">Blocked Numbers</a></li>                                   
-                                <li><a href="ui-list-group.html">Edit Bill</a></li>
+                                <li><a href="{% url 'adminapp:winningcount_report' %}">Count Winning Report</a></li> 
+                                <li><a href="{% url 'adminapp:blocked_numbers' %}">Blocked Numbers</a></li>                                   
+                                <li><a href="{% url 'adminapp:edit_bill' %}">Edit Bill</a></li>
+                                <li><a href="{% url 'adminapp:payment_report' %}">Payment Report</a></li>
                                
                                 
                            
@@ -84,12 +85,14 @@
                             <a href="{% url 'adminapp:results' %}" ><i class=" icon-trophy"></i> <span>Results</span></a>
                            
                         </li>
-                        
+                    
                         <li>
-                            <a href="" ><i class="icon-note"></i> <span>Change Paasword</span></a>
+                            <a href="{% url 'adminapp:change_password' %}" ><i class="icon-note"></i> <span>Change Paasword</span></a>
                            
                         </li>
-                        <li><a href="ui-media-object.html">Settings</a></li>
+                        <li>
+                        <a href="{% url 'adminapp:settings' %}"><i class="icon-note"></i>Settings</a></li>
+                        <li>
                        
                      
                     </ul>

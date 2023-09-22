@@ -1,0 +1,112 @@
+
+
+{% extends 'adminapp/partials/base.html' %}
+{% load static %}
+{% block content %}
+
+
+
+
+<div id="main-content" class="profilepage_2 blog-page">
+    <div class="container-fluid">
+
+        <div class="block-header">
+            <div class="row">
+                <div class="col-lg-5 col-md-8 col-sm-12">                        
+                    <h2><a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth"><i class="fa fa-arrow-left"></i></a> Search Results</h2>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html"><i class="icon-home"></i></a></li>                            
+                        <li class="breadcrumb-item">Pages</li>
+                        <li class="breadcrumb-item active">Search Results</li>
+                    </ul>
+                </div>            
+               
+            </div>
+        </div>
+        <div class="row clearfix">
+            <div class="col-lg-3 col-md-5 col-sm-12">
+                
+                <div class="card modal-open m-b-5">
+                    <div class="body">
+                        <p class="mb-0">    Open Time Format <small class="text-muted float-right"></small></p>
+
+                        <h6>6:00 pm</h6>
+                    </div>
+                    <div class="progress progress-xs progress-transparent custom-color-blue mb-0">
+                        <div class="progress-bar" data-transitiongoal="18"></div>
+                    </div>
+                </div>
+                <div class="card modal-open m-b-5">
+                    <div class="body">
+                        <p class="mb-0">Close Time Format <small class="text-muted float-right"></small></p>
+
+                        <h6>10:00 pm</h6>
+                    </div>
+                    <div class="progress progress-xs progress-transparent custom-color-purple mb-0">
+                        <div class="progress-bar" data-transitiongoal="34"></div>
+                    </div>
+                </div>
+                <div class="card modal-open">
+                    <div class="body">
+                        <button type="button" class="btn btn-warning" data-method="rotateTo" data-option="180"> <span class="docs-tooltip" data-toggle="tooltip" title="cropper.rotateTo(180)"> Deletion Time </span> </button>
+
+                    </div>
+                    <div class="progress progress-xs progress-transparent custom-color-green mb-0">
+                        <div class="progress-bar" data-transitiongoal="67"></div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="col-lg-9 col-md-7 col-sm-12">
+              
+                    
+                    <div class="body">                        
+                        
+                            <div class="card">
+                                <div class="header">
+                                    <h2>Update ......###</h2>
+                                </div>
+                                <div class="body">
+                                  
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="tax-id" class="control-label">Super Limit</label>
+                                            <input type="text" value="" placeholder="" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="tax-id" class="control-label">Box Limit</label>
+                                            <input type="text" value="" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="tax-id" class="control-label">Single Limit </label>
+                                            <input type="text" value="" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="tax-id" class="control-label">Double Limit</label>
+                                            <input type="text" value=""  class="form-control">
+                                        </div>
+                                        <!-- <button class="btn btn-primary">Subscribe</button> -->
+                                    </form>
+                                    <div class="row">
+                                        <div class="col-md-12 align-right">
+                                            <!-- <button class="btn btn-warning"><i class="icon-printer"></i></button> -->
+                                            <button class="btn btn-primary">UPDATE</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                          
+                    </div>                    
+                
+            </div>                
+        </div>
+        
+    </div>
+</div>
+                
+
+
+
+{% endblock %}

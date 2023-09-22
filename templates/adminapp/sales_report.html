@@ -8,11 +8,11 @@
         <div class="block-header">
             <div class="row">
                 <div class="col-lg-5 col-md-8 col-sm-12">                        
-                    <h2><a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth"><i class="fa fa-arrow-left"></i></a> Monitor</h2>
+                    <h2><a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth"><i class="fa fa-arrow-left"></i></a> Sales Report</h2>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html"><i class="icon-home"></i></a></li>                            
+                        <li class="breadcrumb-item"><a href="{% url 'adminapp:index' %}"><i class="icon-home"></i></a></li>                            
                         <!-- <li class="breadcrumb-item">Pages</li> -->
-                        <li class="breadcrumb-item active">monitor</li>
+                        <li class="breadcrumb-item active">Sales Report</li>
                     </ul>
                 </div>            
                
@@ -293,8 +293,9 @@
                                     <div class="card">
                                        
                                         <div class="body">
-                                        <div class="table-responsive">
-                                            <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                                        <div class="table-responsive ">
+                                            
+                                            <table class="table table-bordered table-striped table-hover dataTable js-exportable  printcontent">
                                                 <thead>
                                                     <tr>
                                                         <th>Date</th>
@@ -335,12 +336,30 @@
                                                     </tr>
                                                  
                                                 </tbody>
+                                                
                                             </table>
                                             </div>
                                         </div>
+                                        
                                     </div>
                                 </div>
+                                
                             </div>
+                            <div class=" row text-right">
+                                        
+                                <div class="col-lg-2 col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <button id="button">Print this page</button>
+                                    </div>  
+                                    
+                                </div>
+                                <div class="col-lg-2 col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <label for="tax-id" class="control-label"></label>
+                                        <input type="text" placeholder="NET AMOUNT" class="form-control">
+                                    </div>  
+                                </div>
+                                
                             
                         </div>
                     </div>
@@ -349,6 +368,24 @@
         </div>
     </div>
 </div>
+
+<script>
+    function printcontent()
+    {
+      
+        var divToPrint=document.getElementById("printcontent");
+        newWin= window.open("");
+        newWin.document.write(divToPrint.outerHTML);
+        newWin.document.close();
+        newWin.print();
+        //newWin.close();
+    }
+
+    document.querySelector("#button").addEventListener("click", function(){
+      printcontent();
+    });
+    
+    </script>
 
 
 

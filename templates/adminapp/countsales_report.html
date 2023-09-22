@@ -1,0 +1,162 @@
+{% extends 'adminapp/partials/base.html' %}
+{% load static %}
+{% block content %}
+
+
+<div id="main-content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-lg-5 col-md-8 col-sm-12">                        
+                    <h2><a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth"><i class="fa fa-arrow-left"></i></a> Count Sales Report</h2>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'adminapp:index' %}"><i class="icon-home"></i></a></li>                            
+                        <!-- <li class="breadcrumb-item">Pages</li> -->
+                        <li class="breadcrumb-item active">Count Sales Report</li>
+                    </ul>
+                </div>            
+               
+            </div>
+        </div>
+
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="card">
+                    <div class="header">
+                        <!-- <h2></h2> -->
+                    </div>
+                    <div class="body">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                
+                                <div class="body">
+                                    <div class="row clearfix">
+                                         <!-- <div class="col-lg-2 col-md-6 col-sm-12">
+                                            <div class="form-group">
+                                                <div class="body search">
+                                                    <div class="input-group ">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text"><i class="icon-magnifier"></i></span>
+                                                        </div>
+                                                        <input type="text" class="form-control" placeholder="Search...">                                    
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> -->
+                                      
+
+
+                                                   
+                                        <div class="col-lg-2 col-md-6 col-sm-12">
+                                            <div class="form-group">
+                                                <label for="tax-id" class="control-label">Date</label>
+                                                <input type="date" value="2017-06-01" class="form-control">
+                                            </div>  
+                                        </div>
+                                        
+                                    <div class="col-lg-2 col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label for="tax-id" class="control-label">Agent</label>
+                                            <div class="mb-3">
+                                                
+                                                <select class="form-control show-tick ms select2" data-placeholder="Select">
+                                                    <option></option>
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2 col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label for="tax-id" class="control-label">Dealer</label>
+                                            <div class="mb-3">
+                                                
+                                                <select class="form-control show-tick ms select2" data-placeholder="Select">
+                                                    <option></option>
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+<!--                                     
+                                    <div class="col-lg-2 col-md-6 col-sm-12" >
+                                        <div class="form-group">
+                                            
+                                            <label class="fancy-checkbox"  > <br></label>
+                                                <input type="checkbox" name="checkbox">
+                                                <span><i class=" m-r-5"></i>Show Winnng Price Deatails</span>
+                                           
+                                        </div>
+                                    </div> -->
+                                        <div class="col-lg-2 col-md-6 col-sm-12">
+                                            <div class="form-group">
+                                                <label for="ssn" class="control-label">  click </label>
+                                                <br><button type="button" class="btn btn-primary">GO</button>
+                                               
+                                            </div>
+                                        </div>
+                                      
+                                    </div>
+                                   
+                                 </div>
+                                
+                                <div class="body">
+                                    <div class="table-responsive">
+                                        <table class="table m-b-0">
+                                            <thead>
+                                                <tr>
+                                                    
+                                                    
+                                                    <th> Position Count </th>
+                                                    <th>Count</th>
+                                                    <th> Amount</th>
+                                                    
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>agent/dealer</td>
+                                                    <td><span>4</span></td>
+                                                    <td><span class="text-info">600 </span></td>
+                                                   
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class=" row text-right">
+                                        
+                                        <div class="col-lg-2 col-md-6 col-sm-12">
+                                            <div class="form-group">
+                                                <label for="tax-id" class="control-label"></label>
+                                                <input type="text" placeholder="NET COUNT" class="form-control">
+                                            </div>  
+                                            
+                                        </div>
+                                        <div class="col-lg-2 col-md-6 col-sm-12">
+                                            <div class="form-group">
+                                                <label for="tax-id" class="control-label"></label>
+                                                <input type="text" placeholder="NET AMOUNT" class="form-control">
+                                            </div>  
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
