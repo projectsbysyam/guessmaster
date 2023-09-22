@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from website.forms import LoginForm
 from website.forms import DealerRegistration,UserUpdateForm
 from website.models import User,Dealer,Agent
+from adminapp.models import PlayTime
 from django.contrib import messages
 from django.views.decorators.csrf import csrf_exempt
 from website.decorators import dealer_required, agent_required
@@ -11,6 +12,7 @@ from website.decorators import dealer_required, agent_required
 @login_required
 @agent_required
 def index(request):
+    
     return render(request,"agent/index.html")
 
 @csrf_exempt

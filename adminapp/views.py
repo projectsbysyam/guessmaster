@@ -120,7 +120,6 @@ def add_result(request):
     }
     return render(request,'adminapp/add_result.html',context)
 
-
 def sales_report(request):
     return render(request,'adminapp/sales_report.html')
 
