@@ -4,6 +4,7 @@ from website.decorators import dealer_required, agent_required, admin_required
 from website.forms import LoginForm,UserUpdateForm
 from website.forms import AgentRegistration
 from website.models import User,Agent,Dealer
+from .models import PlayTime
 from django.contrib import messages
 from django.views.decorators.csrf import csrf_exempt
 
@@ -111,8 +112,13 @@ def package(request):
 def new_package(request):
     return render(request,'adminapp/new_package.html')
 
-def create_winningprice(request):
-    return render(request,'adminapp/create_winningprice.html')
+def add_result(request):
+    timings = PlayTime.objects.filter().all()
+    print(timings)
+    context = {
+        'timings' : timings
+    }
+    return render(request,'adminapp/add_result.html',context)
 
 
 def sales_report(request):

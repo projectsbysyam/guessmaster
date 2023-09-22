@@ -30,16 +30,20 @@
                                
                             </li>
                         <li>
-                            <a href="#Dashboard" class="has-arrow"><i class=" icon-users"></i> <span>Agent</span></a>
+                            <a href="#Results" class="has-arrow"><i class="icon-trophy"></i> <span>Result</span></a>
+                            <ul>
+                                <li><a href="{% url 'adminapp:add_result' %}">Add Result</a></li>                                    
+                                <li><a href="{% url 'adminapp:view_results' %}">View Result</a></li>
+                                
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#Dashboard" class="has-arrow"><i class="icon-users"></i> <span>Agent</span></a>
                             <ul>
                                 <li><a href="{% url 'adminapp:add_agent' %}">Add Agent</a></li>                                    
                                 <li><a href="{% url 'adminapp:view_agent' %}">View Agent</a></li>
                                 
                             </ul>
-                        </li>
-                        <li>
-                            <a href="{% url 'adminapp:create_winningprice' %}" ><i class=" icon-refresh"></i> <span>Create Winning Price</span></a>
-                          
                         </li>
                         <li>
                             <a href="#Dashboard" class="has-arrow"><i class=" icon-users"></i> <span>Package</span></a>
@@ -51,8 +55,12 @@
                         </li>
                       
                         <li>
-                            <a href="{% url 'adminapp:changegame' %}" ><i class=" icon-refresh"></i> <span>Change Game</span></a>
-                          
+                            <a href="#GameTime" class="has-arrow"><i class=" icon-refresh"></i> <span>Game Time</span></a>
+                            <ul>
+                                <li><a href="{% url 'adminapp:add_time' %}">Add Time</a></li>                                    
+                                <li><a href="{% url 'adminapp:change_time' %}">Change Time</a></li>
+                                
+                            </ul>
                         </li>
                         <li>
                             <a href="{% url 'adminapp:monitor' %}" ><i class="icon-screen-desktop"></i> <span>Monitor</span></a>
@@ -81,11 +89,8 @@
                            
                             </ul>
                         </li>
-                        <li>
-                            <a href="{% url 'adminapp:results' %}" ><i class=" icon-trophy"></i> <span>Results</span></a>
-                           
-                        </li>
-                    
+                        
+                        
                         <li>
                             <a href="{% url 'adminapp:change_password' %}" ><i class="icon-note"></i> <span>Change Paasword</span></a>
                            
