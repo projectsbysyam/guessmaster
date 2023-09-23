@@ -1,4 +1,4 @@
-{% extends 'adminapp/partials/base.html' %}
+{% extends 'agent/partials/base.html' %}
 {% load static %}
 {% block content %}
 
@@ -10,7 +10,7 @@
                 <div class="col-lg-5 col-md-8 col-sm-12">                        
                     <h2><a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth"><i class="fa fa-arrow-left"></i></a> Sales Report</h2>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{% url 'adminapp:index' %}"><i class="icon-home"></i></a></li>                            
+                        <li class="breadcrumb-item"><a href="{% url 'agent:index' %}"><i class="icon-home"></i></a></li>                            
                         <!-- <li class="breadcrumb-item">Pages</li> -->
                         <li class="breadcrumb-item active">Sales Report</li>
                     </ul>
@@ -35,7 +35,7 @@
                                                 </div>
                                                 <div class="col-lg-2 col-md-6 col-sm-12">
                                                     <div class="form-group">
-                                                        <label for="tax-id" class="control-label">Sort Customer</label>
+                                                        <label for="tax-id" class="control-label">All Dealer</label>
                                                         <div class="mb-3">
                                                             
                                                             <select class="form-control show-tick ms select2" data-placeholder="Select">
@@ -47,7 +47,11 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-2 col-md-6 col-sm-12">
+                                                <div class="form-group">
+                                                    <label for="tax-id" class="control-label">Date</label>
+                                                    <input type="date" value="2017-06-01" class="form-control">
+                                                </div> 
+                                                <!-- <div class="col-lg-2 col-md-6 col-sm-12">
                                                     <div class="form-group">
                                                         <label for="tax-id" class="control-label">Sort Customer</label>
                                                         <div class="mb-3">
@@ -60,7 +64,7 @@
                                                             </select>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> -->
 
                         </ul>
                      
@@ -83,7 +87,7 @@
                                                 <thead>
                                                     <tr>
                                                         <th>Date</th>
-                                                        <th>AGENT/DEALER Name</th>
+                                                        <th>DEALER Name</th>
                                                         <th>Bill</th>
                                                         <th>Count</th>
                                                         <th>S.Amount</th>
@@ -345,11 +349,10 @@
                                 </div>
                                 
                             </div>
-                            <div class=" row text-right">
+                            <!-- <div class=" row text-right">
                                         
                                 <div class="col-lg-2 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                                <!-- <label for="ssn" class="control-label">  click </label> -->
                                                 <br><button type="button" class="btn btn-primary">print</button>
                                                
                                             </div>
@@ -363,7 +366,7 @@
                                 </div>
                                 
                             
-                        </div>
+                        </div> -->
                     </div>
                     </div>             
             </div>

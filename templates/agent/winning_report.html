@@ -1,4 +1,4 @@
-{% extends 'adminapp/partials/base.html' %}
+{% extends 'agent/partials/base.html' %}
 {% load static %}
 {% block content %}
 <div id="main-content">
@@ -8,7 +8,7 @@
                 <div class="col-lg-5 col-md-8 col-sm-12">                        
                     <h2><a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth"><i class="fa fa-arrow-left"></i></a>  Winning Report </h2>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{% url 'adminapp:index' %}"><i class="icon-home"></i></a></li>                            
+                        <li class="breadcrumb-item"><a href="{% url 'agent:index' %}"><i class="icon-home"></i></a></li>                            
                         <li class="breadcrumb-item">Winning Report</li>
                     </ul>
                 </div>            
@@ -43,20 +43,6 @@
                                            </div>
                                      <div class="col-lg-2 col-md-6 col-sm-12">
                                         <div class="form-group">
-                                            <label for="tax-id" class="control-label">Agent</label>
-                                            <div class="mb-3">
-                                                
-                                                <select class="form-control show-tick ms select2" data-placeholder="Select">
-                                                    <option></option>
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-2 col-md-6 col-sm-12">
-                                        <div class="form-group">
                                             <label for="tax-id" class="control-label">Dealer</label>
                                             <div class="mb-3">
                                                 
@@ -69,6 +55,20 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <!-- <div class="col-lg-2 col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label for="tax-id" class="control-label">Dealer</label>
+                                            <div class="mb-3">
+                                                
+                                                <select class="form-control show-tick ms select2" data-placeholder="Select">
+                                                    <option></option>
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div> -->
                                     
 
                                         <div class="col-lg-2 col-md-6 col-sm-12">

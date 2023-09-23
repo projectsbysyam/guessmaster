@@ -38,49 +38,90 @@
                                 
                             </ul>
                         </li>
+
                         <li>
-                            <a href="#App" class="has-arrow"><i class=" icon-bag"></i> <span></span>Package</a>
-                        
-                        </li>
-                        <li>
-                            <a href="" ><i class=" icon-refresh"></i> <span>Change Game</span></a>
-                          
-                        </li>
-                        <li>
-                            <a href="" ><i class="icon-screen-desktop"></i> <span>Monitor</span></a>
+                            <a href="{% url 'agent:results' %}" ><i class=" icon-trophy"></i> <span>Results</span></a>
                            
                         </li>
-                        <li>
-                            <a href=" "><i class="icon-book-open "></i> <span>Daily Report</span></a>
-                         
-                        </li>
-                        <li>
-                            <a href="#uiElements" class="has-arrow"><i class="icon-grid"></i> <span>Others</span></a>
-                            <ul>
-                                <!-- <li><a href="ui-typography.html">Customer</a></li> -->
-                                
-                                <li><a href="ui-buttons.html">Sales report</a></li>
-                                <li><a href="ui-bootstrap.html"> Count Wise Report</a></li>
-                                <li><a href="ui-icons.html">Count Sales Report</a></li>
-                                <li><a href="ui-notifications.html">Winning Report</a></li>
 
-                                <li><a href="ui-dialogs.html">Count Winning Report</a></li> 
-                                <li><a href="ui-colors.html">Blocked Numbers</a></li>                                   
-                                <li><a href="ui-list-group.html">Edit Bill</a></li>
+                        <li>
+                            <a href="{% url 'agent:booking' %}" class=""><i class=" icon-bag"></i> <span></span>Booking</a>
+                        
+                        </li>
+                      
+                      
+                        <li>
+                            <a href="#uiElements" class="has-arrow"><i class="icon-grid"></i> <span>Reports</span></a>
+                            <ul>
+                                <li>
+                                    <a href=" {% url 'agent:sales_report' %}" ><i class="icon-bag"></i> <span>Sales Report</span></a>
+                                  
+                                </li>
+                                <li>
+                                    <a href=" {% url 'agent:daily_report' %}" ><i class="icon-screen-desktop"></i> <span>daily_report</span></a>
+                                   
+                                </li>
+                                <li>
+                                    <a href=" {% url 'agent:winning_report' %}"><i class="icon-book-open "></i> <span>winning Report</span></a>
+                                 
+                                </li>
+                                
+                                <li>
+                                    <a href=" {% url 'agent:count_salereport' %}"><i class="icon-book-open "></i> <span>Count Sales Report</span></a>
+                                 
+                                </li>
+                                <li>
+                                    <a href=" {% url 'agent:winning_countreport' %}"><i class="icon-book-open "></i> <span>Winnning Count Report</span></a>
+                                 
+                                </li>
+                                <li>
+                                    <a href=" {% url 'agent:balance_report' %}"><i class="icon-book-open "></i> <span>Balance Report</span></a>
+                                 
+                                </li>
                                
-                                <li><a href="ui-media-object.html">Settings</a></li>
+                               
                            
                             </ul>
                         </li>
                         <li>
-                            <a href="" ><i class=" icon-trophy"></i> <span>Results</span></a>
+                            <a href="#" class="has-arrow"><i class="icon-grid"></i> <span>Collection</span></a>
+                            <ul>
+                               
+                                
+                                <li>
+                                    <a href=" {% url 'agent:collection_report' %}"><i class="icon-book-open "></i> <span>Collection Report</span></a>
+                                 
+                                </li>
+                                <li>
+                                    <a href=" {% url 'agent:add_collection' %}"><i class="icon-book-open "></i> <span> Add Collection</span></a>
+                                 
+                                </li>
+                                
+                               
                            
+                            </ul>
                         </li>
-                        
                         <li>
-                            <a href="" ><i class="icon-note"></i> <span>Change Paasword</span></a>
+                            <a href="#" class="has-arrow"><i class="icon-grid"></i> <span>Settings</span></a>
+                            <ul>
+                               
+                                
+                                <li>
+                                        <a href="{% url 'agent:edit_bill' %}" ><i class="icon-note"></i> <span>Edit Bill</span></a>
+                                   
+                                </li>
+                                <li>
+                                    <a href="{% url 'agent:change_password' %}" ><i class="icon-note"></i> <span>Change Paasword</span></a>
+                                   
+                                </li>
+                                
+                               
                            
+                            </ul>
                         </li>
+                       
+                        
+                        
                        
                      
                     </ul>

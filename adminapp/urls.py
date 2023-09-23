@@ -4,6 +4,8 @@ from django.urls import path
 app_name = 'adminapp'
 
 urlpatterns = [
+
+    
     path('index',views.index,name="index"),
     path('agent',views.agent,name="agent"),
     path('add-agent',views.add_agent,name="add_agent"),
@@ -23,7 +25,7 @@ urlpatterns = [
     path('monitor',views.monitor,name="monitor"),
     path('dailyreport',views.daily_report,name="dailyreport"),
     path('countwise-report',views.countwise_report,name="countwise_report"),
-    path('countsales-eport',views.countsales_report,name="countsales_report"),
+    path('countsales-report',views.countsales_report,name="countsales_report"),
     path('winning_report',views.winning_report,name="winning_report"),
     path('winningcount-report',views.winningcount_report,name="winningcount_report"),
     path('blocked_numbers',views.blocked_numbers,name="blocked_numbers"),
