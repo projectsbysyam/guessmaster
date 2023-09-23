@@ -18,7 +18,7 @@
             {% for time, is_available in zipped_play_times %}
             {% if is_available %}
             <div class="col-lg-3 col-md-12">
-                <a href="#availbale">
+                <a href="{% url 'agent:play_game' time.id %}">
                 <div class="card top_counter currency_state">
                     <div class="body">
                         <div class="icon"><img src="{% static 'images/coin/neo.svg' %}" width="35" /></div>

@@ -136,3 +136,14 @@ def edit_bill(request):
 
 def change_password(request):
     return render(request,'agent/change_password.html')
+def play_game(request,id):
+    print(id)
+    time = PlayTime.objects.get(id=id)
+    print(time.end_time)
+    agent = Agent.objects.get(user=request.user)
+    dealers = Dealer.objects.filter(agent=agent).all()
+    context = {
+        'time' : time,
+        'dealers' : dealers
+    }
+    return render(request,'agent/play_game.html',context)

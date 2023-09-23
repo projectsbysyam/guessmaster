@@ -26,4 +26,5 @@ urlpatterns = [
     path('edit-bill',views.edit_bill,name="edit_bill"),
     path('change-password',views.change_password,name="change_password"),
 
+    path('play-game/<int:id>',views.play_game,name="play_game")
 ]
