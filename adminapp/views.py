@@ -190,3 +190,6 @@ def change_password(request):
 def settings(request):
     return render(request,'adminapp/settings.html')
 
+def change_password(request):
+    return render(request,'adminapp/change_password.html')
+

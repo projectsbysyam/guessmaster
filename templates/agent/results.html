@@ -1,0 +1,89 @@
+{% extends 'agent/partials/base.html' %}
+{% load static %}
+{% block content %}
+
+<div id="main-content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-lg-5 col-md-8 col-sm-12">                        
+                    <h2><a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth"><i class="fa fa-arrow-left"></i></a> Search Results</h2>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="i{% url 'agent:index' %}"><i class="icon-home"></i></a></li>                            
+                        <li class="breadcrumb-item">Pages</li>
+                        <li class="breadcrumb-item active">Search Results</li>
+                    </ul>
+                </div>            
+               
+            </div>
+        </div>
+
+        <div class="row clearfix">
+            <div class="col-md-12">
+              
+                <div class="tab-content padding-0">
+                    <div class="tab-pane card active" id="Web">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="header">
+                                    <!-- <h2>Basic Example 8</h2> -->
+                                </div>
+                                <div class="body">
+                                    <div class="table-responsive">
+                                        <table class="table center-aligned-table">
+                                            <thead>
+                                            <tr>
+                                                <th>Date</th>
+                                                <th>First Price</th>
+                                                <th>Second Price</th>
+                                                <th>Third Price</th>
+                                                <th>Fourth Price</th>
+                                                <th>Fifth Price</th>
+                                                <th>complement</th>
+                                                
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                         
+                                            <tr>
+                                                <td>5/3/2020</td>
+                                                <td>8</td>
+                                                <td>8 </td>
+                                                <td>7</td>
+                                                <td>7</td>
+                                                <td>8 </td>
+                                                <td>7</td>
+                                                <!-- <td><label class="badge">Approved</label></td>
+                                                <td><a href="javascript:void(0);" class="btn btn-success btn-sm">View Order</a></td>
+                                                <td><button class="btn btn-danger btn-sm"><i class="icon-trash"></i></button></td> -->
+                                            </tr>
+                                            
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                      
+                      
+                    </div>
+                    <div class="tab-pane card" id="Images">
+                        <div class="body text-center">
+                            <div class="not_found">
+                                <h4 class="m-b-0">Sorry No result found.</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane card" id="Videos">
+                        <div class="body text-center">
+                            <div class="not_found">
+                                <h4 class="m-b-0">Sorry No result found.</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

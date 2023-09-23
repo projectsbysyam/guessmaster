@@ -101,3 +101,38 @@ def remove_ban(request,id):
 
 def booking(request):
     return render(request,'agent/booking.html')
+
+
+
+def results(request):
+    return render(request,'agent/results.html')
+
+def sales_report(request):
+    return render(request,'agent/sales_report.html')
+
+def daily_report(request):
+    return render(request,'agent/daily_report.html')
+
+def winning_report(request):
+    return render(request,'agent/winning_report.html') 
+
+def count_salereport(request):
+    return render(request,'agent/count_salereport.html') 
+
+def winning_countreport(request):
+    return render(request,'agent/winning_countreport.html') 
+
+def collection_report(request):
+    return render(request,'agent/collection_report.html') 
+
+def add_collection(request):
+    return render(request,'agent/add_collection.html') 
+
+def balance_report(request):
+    return render(request,'agent/balance_report.html') 
+
+def edit_bill(request):
+    return render(request,'agent/edit_bill.html')
+
+def change_password(request):
+    return render(request,'agent/change_password.html')

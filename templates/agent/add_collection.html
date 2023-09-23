@@ -1,0 +1,101 @@
+{% extends 'agent/partials/base.html' %}
+{% load static %}
+{% block content %}
+
+<div id="main-content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-lg-5 col-md-8 col-sm-12">                        
+                    <h2><a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth"><i class="fa fa-arrow-left"></i></a>Add Collection </h2>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'agent:index' %}"><i class="icon-home"></i></a></li>                            
+                        <li class="breadcrumb-item"> Add Collection </li>
+                    </ul>
+                </div>            
+             
+            </div>
+        </div>
+        </div>
+        <div class="row clearfix">
+            <div class=" col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>Add Result</h2>
+                    </div>
+                    <div class="body" >
+                        <form id="basic-form" method="post" novalidate>
+                            <div class="col-lg-4 col-md-12">
+                                <label>Select Date (mm/dd/yyyy)</label>
+                                <div class="form-group">
+                                    <label for="tax-id" class="control-label">Date</label>
+                                    <input type="date" value="2017-06-01" class="form-control">
+                                </div>   
+                            </div>
+                           
+                                 <div class="body col-lg-4 col-md-12">
+                                  
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="tax-id" class="control-label">All Dealer</label>
+                                            <div class="mb-3">
+                                                
+                                                <select class="form-control show-tick ms select2" data-placeholder="Select">
+                                                    <option></option>
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="tax-id" class="control-label">Amount</label>
+                                            <input type="text" value="" class="form-control">
+                                        </div>
+                                       
+                                        <!-- <button class="btn btn-primary">Subscribe</button> -->
+                                    </form>
+                                    <div class="row">
+                                        <div class="col-md-12 align-right">
+                                            <!-- <button class="btn btn-warning"><i class="icon-printer"></i></button> -->
+                                            <button class="btn btn-primary">Collect</button>
+                                        </div>
+                                    </div>
+                                </div>
+                           
+                      
+                        </form>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+        
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+    console.log("Script is running");
+    $(document).ready(function() {
+        // Get today's date
+        console.log("working")
+        var today = new Date();
+    
+        // Format the date as 'dd/mm/yyyy'
+        var formattedDate =  (today.getMonth() + 1) + '/' + today.getDate() + '/' + today.getFullYear();
+        console.log(today,"working")
+        // Set the default date format for the datepicker and the language/locale
+        $('.datepicker-input').datepicker({
+            format: 'mm/dd/yyyy',  // Set the date format here
+            autoclose: true,
+            language: 'en-GB' // Set the language/locale to a format that uses 'dd/mm/yyyy'
+        });
+    
+        // Set the default date value for the input field
+        $('.datepicker-input').datepicker('setDate', formattedDate);
+    });
+</script>
+    
+    
+    
+{% endblock %}
