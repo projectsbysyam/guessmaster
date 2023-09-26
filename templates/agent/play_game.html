@@ -229,6 +229,81 @@
     </script>
 
 
+
+<script>
+    var amounts = {
+    "A": 10.50,
+    "B": 20.75,
+    "C": 15.25,
+    "AB": 30.00,
+    "BC": 25.00,
+    // Add more linkText-amount pairs as needed
+    };
+    // Function to calculate and display results based on the selected link
+    function calculateAndDisplay(linkText) {
+        console.log(linkText)
+        // Get the input values
+        var number = parseFloat(document.getElementById("numberInput").value);
+        var count = parseFloat(document.getElementById("countInput").value);
+
+        console.log(number)
+
+        console.log(count)
+
+        // Calculate results based on the selected link
+        var result1, result2, result3; // Calculate your results here based on linkText
+
+        var rate = amounts[linkText];
+
+        result1 = (count * rate).toFixed(2);
+
+        console.log(result1)
+
+        result2 = (count * (rate + 1.50)).toFixed(2);
+
+        // Update the table with the calculated results
+        document.getElementById("mainTable").innerHTML = `
+        <thead>
+                                <tr>
+                                    <th colspan="2">Count: 500</th>
+                                    <th colspan="2">AMT: 5000.00</th>
+                                    <th colspan="2">TOT: 6000.00</th>
+                                </tr>
+                                <tr>
+                                    <th>LSK</th>
+                                    <th>No</th>
+                                    <th>Count</th>
+                                    <th>D.AMT</th>
+                                    <th>C.AMT</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+            <tbody>
+                <tr>
+                    <td>${linkText}</td>
+                    <td>${number}</td>
+                    <td>${count}</td>
+                    <td>${result1}</td>
+                    <td>${result2}</td>
+                    <td><button type="button" class="btn btn-info" title="Edit"><i class="fa fa-edit"></i></button></td>
+                </tr>
+                <!-- Add more rows as needed -->
+            </tbody>
+        `;
+    }
+
+    // Attach click event listeners to your tabs/links
+    var tabLinks = document.querySelectorAll(".nav-link");
+    tabLinks.forEach(function (link) {
+        link.addEventListener("click", function () {
+            calculateAndDisplay(link.textContent);
+        });
+    });
+
+    // Initial calculation and display (you can update this as needed)
+    calculateAndDisplay("A"); // Default to "A" when the page loads
+</script>
+
     
 
     <script>

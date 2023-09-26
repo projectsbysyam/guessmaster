@@ -17,126 +17,151 @@
             </div>
         </div>
 
+        <form method="POST">
+        {% csrf_token %}
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <div class="card">
-                    <div class="header">
-                        <h2>New Package</h2>
-                    </div>
                     <div class="body">
-                        <div class="col-lg-12">
-                            <div class="card">
-                                
-                                <div class="body">
-                                    <div class="row clearfix">
-                                         <!-- <div class="col-lg-2 col-md-6 col-sm-12">
-                                            <div class="form-group">
-                                                <div class="body search">
-                                                    <div class="input-group ">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text"><i class="icon-magnifier"></i></span>
-                                                        </div>
-                                                        <input type="text" class="form-control" placeholder="Search...">                                    
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div> -->
-                                      
-
-
-                                                   
-                                        
-                                        
-                                    <div class="col-lg-2 col-md-6 col-sm-12">
-                                        <div class="form-group">
-                                            <label for="tax-id" class="control-label">Agent</label>
-                                            <div class="mb-3">
-                                                
-                                                <select class="form-control show-tick ms select2" data-placeholder="Select">
-                                                    <option></option>
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-2 col-md-6 col-sm-12">
-                                        <div class="form-group">
-                                            <label for="tax-id" class="control-label">Dealer</label>
-                                            <div class="mb-3">
-                                                
-                                                <select class="form-control show-tick ms select2" data-placeholder="Select">
-                                                    <option></option>
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-2 col-md-6 col-sm-12">
-                                        <div class="form-group">
-                                            <label>Text Input</label>
-                                            <input type="text" class="form-control" required>
-                                        </div>
-                                    </div>
-<!--                                     
-                                    <div class="col-lg-2 col-md-6 col-sm-12" >
-                                        <div class="form-group">
-                                            
-                                            <label class="fancy-checkbox"  > <br></label>
-                                                <input type="checkbox" name="checkbox">
-                                                <span><i class=" m-r-5"></i>Show Winnng Price Deatails</span>
-                                           
-                                        </div>
-                                    </div> -->
-                                        <div class="col-lg-2 col-md-6 col-sm-12">
-                                            <div class="form-group">
-                                                <label for="ssn" class="control-label">  click </label>
-                                                <br><button type="button" class="btn btn-primary">GO</button>
-                                               
-                                            </div>
-                                        </div>
-                                      
-                                    </div>
-                                   
-                                 </div>
-                                
-                                <div class="body">
-                                    <div class="table-responsive">
-                                        <table class="table m-b-0">
-                                            <thead>
-                                                <tr>
-                                                    
-                                                    
-                                                    <th>Ticket name</th>
-                                                    <th>Rate</th>
-                                                    <th> DC</th>
-                                                    
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>NAME1</td>
-                                                    <td><span>4</span></td>
-                                                    <td><span class="text-info">6 </span></td>
-                                                   
-                                                </tr>
-
-                                            </tbody>
-                                        </table>
+                        <div class="row clearfix">
+                            <div class="col-lg-3 col-md-6">
+                                <div class="mb-3">
+                                    <label>Select Agent</label>
+                                    <select name="agent" class="form-control show-tick ms select2" data-placeholder="Select">
+                                        {% for agent in agents %}
+                                        <option>{{agent.user}}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="mb-3">
+                                    <div class="form-group">
+                                        <label>Package Name</label>
+                                        <input type="text" name="package_name" class="form-control" required>
                                     </div>
                                 </div>
                             </div>
-                            
                         </div>
-                    </div>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="row clearfix">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="body">
+                        <table id="mainTable" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Ticket</th>
+                                    <th>Rate</th>
+                                    <th>DC</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td contenteditable="true" name="single_ticket">Single</td>
+                                    <td contenteditable="true" name="single_rate">230</td>
+                                    <td contenteditable="true" name="single_dc">200</td>
+                                </tr>
+                                <tr>
+                                    <td contenteditable="true" name="double_ticket">Double</td>
+                                    <td contenteditable="true" name="double_rate">330</td>
+                                    <td contenteditable="true" name="double_dc">240</td>
+                                </tr>
+                                <tr>
+                                    <td contenteditable="true" name="box_ticket">BOX</td>
+                                    <td contenteditable="true" name="box_rate">430</td>
+                                    <td contenteditable="true" name="box_dc">540</td>
+                                </tr>
+                                <tr>
+                                    <td contenteditable="true" name="super_ticket">Super</td>
+                                    <td contenteditable="true" name="super_rate">100</td>
+                                    <td contenteditable="true" name="super_dc">200</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row clearfix">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="body">
+                        <table id="mainTable" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Position</th>
+                                    <th>Win Prize</th>
+                                    <th>DC</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>First</td>
+                                    <td>230</td>
+                                    <td>200</td>
+                                </tr>
+                                <tr>
+                                    <td>Second</td>
+                                    <td>330</td>
+                                    <td>240</td>
+                                </tr>
+                                <tr>
+                                    <td>Third</td>
+                                    <td>430</td>
+                                    <td>540</td>
+                                </tr>
+                                <tr>
+                                    <td>Fourth</td>
+                                    <td>100</td>
+                                    <td>200</td>
+                                </tr>
+                                <tr>
+                                    <td>Fifth</td>
+                                    <td>100</td>
+                                    <td>200</td>
+                                </tr>
+                                <tr>
+                                    <td>Guarantee</td>
+                                    <td>100</td>
+                                    <td>200</td>
+                                </tr>
+                                <tr>
+                                    <td>Box First Prize</td>
+                                    <td>100</td>
+                                    <td>200</td>
+                                </tr>
+                                <tr>
+                                    <td>Box Series</td>
+                                    <td>100</td>
+                                    <td>200</td>
+                                </tr>
+                                <tr>
+                                    <td>Single(1)</td>
+                                    <td>100</td>
+                                    <td>200</td>
+                                </tr>
+                                <tr>
+                                    <td>Double(2)</td>
+                                    <td>100</td>
+                                    <td>200</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        </form>
         
     </div>
 </div>
+
+
+
 {% endblock %} 

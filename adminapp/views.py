@@ -110,7 +110,17 @@ def package(request):
     return render(request,'adminapp/package.html')
 
 def new_package(request):
-    return render(request,'adminapp/new_package.html')
+    try:
+        agent = Agent.objects.filter().all()
+    except:
+        pass
+    if request.method == 'POST':
+        single_rate = request.POST.get('single_rate')
+        print(single_rate,"@@@@@@@")
+    context = {
+        'agents' : agent
+    }
+    return render(request,'adminapp/new_package.html',context)
 
 def add_result(request):
     timings = PlayTime.objects.filter().all()
