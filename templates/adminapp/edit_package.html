@@ -10,19 +10,12 @@
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{% url 'adminapp:index' %}"><i class="icon-home"></i></a></li>                            
                         <li class="breadcrumb-item">Package</li>
-                        <li class="breadcrumb-item active">New Package </li>
+                        <li class="breadcrumb-item active">Edit Package </li>
                     </ul>
                 </div>            
              
             </div>
         </div>
-                                {% if messages %}
-                                {% for message in messages %}
-                                <div class="alert alert-info">
-                                    {{message}}
-                                </div>
-                                {% endfor %}
-                                {% endif %}
         <form method="POST">
         {% csrf_token %}
         <div class="row clearfix">
@@ -34,9 +27,7 @@
                                 <div class="mb-3">
                                     <label>Select Agent</label>
                                     <select name="agent" class="form-control show-tick ms select2" data-placeholder="Select">
-                                        {% for agent in agents %}
-                                        <option value="{{ agent.id }}">{{agent.user}}</option>
-                                        {% endfor %}
+                                        <option value="{{ package.agent.id }}">{{package.agent.user}}</option>
                                     </select>
                                 </div>
                             </div>
@@ -44,7 +35,7 @@
                                 <div class="mb-3">
                                     <div class="form-group">
                                         <label>Package Name</label>
-                                        <input type="text" name="package_name" class="form-control" required>
+                                        <input type="text" value="{{package.package_name}}" name="package_name" class="form-control" required>
                                     </div>
                                 </div>
                             </div>
@@ -69,37 +60,37 @@
                                 <tr>
                                     <td contenteditable="true" name="single_ticket">Single</td>
                                     <td contenteditable="true" name="single_rate" style="position: relative;">
-                                        <input type="number" value="10.5" required  step="0.01" name="single_rate" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                        <input type="number" value="{{package.single_rate}}" required  step="0.01" name="single_rate" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
                                     </td>
                                     <td contenteditable="true" name="single_dc" style="position: relative;">
-                                        <input type="number" value="1.5" required  step="0.01" name="single_dc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                        <input type="number" value="{{package.single_dc}}" required  step="0.01" name="single_dc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td contenteditable="true" name="double_ticket">Double</td>
                                     <td contenteditable="true" name="double_rate" style="position: relative;">
-                                        <input type="number" value="8.5" required  step="0.01" name="double_rate" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                        <input type="number" value="{{package.double_rate}}" required  step="0.01" name="double_rate" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
                                     </td>
                                     <td contenteditable="true" name="double_dc" style="position: relative;">
-                                        <input type="number" value="1.2" required  step="0.01" name="double_dc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                        <input type="number" value="{{package.double_dc}}" required  step="0.01" name="double_dc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td contenteditable="true" name="box_ticket">BOX</td>
                                     <td contenteditable="true" name="box_rate" style="position: relative;">
-                                        <input type="number" value="8.5" required  step="0.01" name="box_rate" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                        <input type="number" value="{{package.box_rate}}" required  step="0.01" name="box_rate" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
                                     </td>
                                     <td contenteditable="true" name="box_dc" style="position: relative;">
-                                        <input type="number" value="1.2" required  step="0.01" name="box_dc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                        <input type="number" value="{{package.box_dc}}" required  step="0.01" name="box_dc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td contenteditable="true" name="super_ticket">Super</td>
                                     <td contenteditable="true" name="super_rate" style="position: relative;">
-                                        <input type="number" value="8.5" required  step="0.01" name="super_rate" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                        <input type="number" value="{{package.super_rate}}" required  step="0.01" name="super_rate" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
                                     </td>
                                     <td contenteditable="true" name="super_dc" style="position: relative;">
-                                        <input type="number" value="1.2" required  step="0.01" name="super_dc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                        <input type="number" value="{{package.super_dc}}" required  step="0.01" name="super_dc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
                                     </td>
                                 </tr>
                             </tbody>
@@ -124,96 +115,96 @@
                                 <tr>
                                     <td>First</td>
                                     <td contenteditable="true" name="first_prize" style="position: relative;">
-                                        <input type="number" value="5000" required  step="0.01" name="first_prize" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                        <input type="number" value="{{package.first_prize}}" required  step="0.01" name="first_prize" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
                                     </td>
                                     <td contenteditable="true" name="first_dc" style="position: relative;">
-                                        <input type="number" value="400" required  step="0.01" name="first_dc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                        <input type="number" value="{{package.first_dc}}" required  step="0.01" name="first_dc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Second</td>
                                     <td contenteditable="true" name="second_prize" style="position: relative;">
-                                        <input type="number" value="500" required  step="0.01" name="second_prize" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                        <input type="number" value="{{package.second_prize}}" required  step="0.01" name="second_prize" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
                                     </td>
                                     <td contenteditable="true" name="second_dc" style="position: relative;">
-                                        <input type="number" value="50" required  step="0.01" name="second_dc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                        <input type="number" value="{{package.second_dc}}" required  step="0.01" name="second_dc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Third</td>
                                     <td contenteditable="true" name="third_prize" style="position: relative;">
-                                        <input type="number" value="250" required  step="0.01" name="third_prize" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                        <input type="number" value="{{package.third_prize}}" required  step="0.01" name="third_prize" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
                                     </td>
                                     <td contenteditable="true" name="third_dc" style="position: relative;">
-                                        <input type="number" value="30" required  step="0.01" name="third_dc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                        <input type="number" value="{{package.third_dc}}" required  step="0.01" name="third_dc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Fourth</td>
                                     <td contenteditable="true" name="fourth_prize" style="position: relative;">
-                                        <input type="number" value="100" required  step="0.01" name="fourth_prize" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                        <input type="number" value="{{package.fourth_prize}}" required  step="0.01" name="fourth_prize" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
                                     </td>
                                     <td contenteditable="true" name="fourth_dc" style="position: relative;">
-                                        <input type="number" value="20" required  step="0.01" name="fourth_dc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                        <input type="number" value="{{package.fourth_dc}}" required  step="0.01" name="fourth_dc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Fifth</td>
                                     <td contenteditable="true" name="fifth_prize" style="position: relative;">
-                                        <input type="number" value="50" required  step="0.01" name="fifth_prize" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                        <input type="number" value="{{package.fifth_prize}}" required  step="0.01" name="fifth_prize" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
                                     </td>
                                     <td contenteditable="true" name="fifth_dc" style="position: relative;">
-                                        <input type="number" value="10" required  step="0.01" name="fifth_dc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                        <input type="number" value="{{package.fifth_dc}}" required  step="0.01" name="fifth_dc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Guarantee(Six)</td>
                                     <td contenteditable="true" name="guarantee_prize" style="position: relative;">
-                                        <input type="number" value="20" required  step="0.01" name="guarantee_prize" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                        <input type="number" value="{{package.guarantee_prize}}" required  step="0.01" name="guarantee_prize" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
                                     </td>
                                     <td contenteditable="true" name="guarantee_dc" style="position: relative;">
-                                        <input type="number" value="0" required  step="0.01" name="guarantee_dc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                        <input type="number" value="{{package.guarantee_dc}}" required  step="0.01" name="guarantee_dc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Box First Prize</td>
                                     <td contenteditable="true" name="box_first_prize" style="position: relative;">
-                                        <input type="number" value="3000" required  step="0.01" name="box_first_prize" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                        <input type="number" value="{{package.box_first_prize}}" required  step="0.01" name="box_first_prize" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
                                     </td>
                                     <td contenteditable="true" name="box_first_prize_dc" style="position: relative;">
-                                        <input type="number" value="250" required  step="0.01" name="box_first_prize_dc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                        <input type="number" value="{{package.box_first_prize_dc}}" required  step="0.01" name="box_first_prize_dc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Box Series</td>
                                     <td contenteditable="true" name="box_series_prize" style="position: relative;">
-                                        <input type="number" value="800" required  step="0.01" name="box_series_prize" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                        <input type="number" value="{{package.box_series_prize}}" required  step="0.01" name="box_series_prize" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
                                     </td>
                                     <td contenteditable="true" name="box_series_dc" style="position: relative;">
-                                        <input type="number" value="50" required  step="0.01" name="box_series_dc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                        <input type="number" value="{{package.box_series_dc}}" required  step="0.01" name="box_series_dc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Single(1)</td>
                                     <td contenteditable="true" name="single1_prize" style="position: relative;">
-                                        <input type="number" value="100" required  step="0.01" name="single1_prize" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                        <input type="number" value="{{package.single1_prize}}" required  step="0.01" name="single1_prize" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
                                     </td>
                                     <td contenteditable="true" name="single1_dc" style="position: relative;">
-                                        <input type="number" value="0" required  step="0.01" name="single1_dc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                        <input type="number" value="{{package.single1_dc}}" required  step="0.01" name="single1_dc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Double(2)</td>
                                     <td contenteditable="true" name="double2_prize" style="position: relative;">
-                                        <input type="number" value="700" required  step="0.01" name="double2_prize" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                        <input type="number" value="{{package.double2_prize}}" required  step="0.01" name="double2_prize" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
                                     </td>
                                     <td contenteditable="true" name="double2_dc" style="position: relative;">
-                                        <input type="number" value="50" required  step="0.01" name="double2_dc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                        <input type="number" value="{{package.double2_dc}}" required  step="0.01" name="double2_dc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
-                        <button type="submit" class="btn btn-primary">Create</button>
+                        <button type="submit" class="btn btn-primary">Update</button>
                     </div>
                 </div>
             </div>

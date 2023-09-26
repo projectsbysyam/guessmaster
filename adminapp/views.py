@@ -4,7 +4,7 @@ from website.decorators import dealer_required, agent_required, admin_required
 from website.forms import LoginForm,UserUpdateForm
 from website.forms import AgentRegistration
 from website.models import User,Agent,Dealer
-from .models import PlayTime
+from .models import PlayTime, AgentPackage
 from django.contrib import messages
 from django.views.decorators.csrf import csrf_exempt
 
@@ -107,20 +107,124 @@ def remove_ban(request,id):
     return redirect('adminapp:view_agent')
 
 def package(request):
-    return render(request,'adminapp/package.html')
+    packages = AgentPackage.objects.filter().all()
+    print(packages)
+    context = {
+        'packages' : packages
+    }
+    return render(request,'adminapp/package.html',context)
 
 def new_package(request):
+    user_obj = request.user
     try:
         agent = Agent.objects.filter().all()
     except:
         pass
     if request.method == 'POST':
+        agent_obj = request.POST.get('agent')
+        package_name = request.POST.get('package_name')
         single_rate = request.POST.get('single_rate')
-        print(single_rate,"@@@@@@@")
+        single_dc = request.POST.get('single_dc')
+        double_rate = request.POST.get('double_rate')
+        double_dc = request.POST.get('double_dc')
+        box_rate = request.POST.get('box_rate')
+        box_dc = request.POST.get('box_dc')
+        super_rate = request.POST.get('super_rate')
+        super_dc = request.POST.get('super_dc')
+        first_prize = request.POST.get('first_prize')
+        first_dc = request.POST.get('first_dc')
+        second_prize = request.POST.get('second_prize')
+        second_dc = request.POST.get('second_dc')
+        third_prize = request.POST.get('third_prize')
+        third_dc = request.POST.get('third_dc')
+        fourth_prize = request.POST.get('fourth_prize')
+        fourth_dc = request.POST.get('fourth_dc')
+        fifth_prize = request.POST.get('fifth_prize')
+        fifth_dc = request.POST.get('fifth_dc')
+        guarantee_prize = request.POST.get('guarantee_prize')
+        guarantee_dc = request.POST.get('guarantee_dc')
+        box_first_prize = request.POST.get('box_first_prize')
+        box_first_prize_dc = request.POST.get('box_first_prize_dc')
+        box_series_prize = request.POST.get('box_series_prize')
+        box_series_dc = request.POST.get('box_series_dc')
+        single1_prize = request.POST.get('single1_prize')
+        single1_dc = request.POST.get('single1_dc')
+        double2_prize = request.POST.get('double2_prize')
+        double2_dc = request.POST.get('double2_dc')
+        selected_agent = Agent.objects.get(id=agent_obj)
+        if AgentPackage.objects.filter(agent=agent_obj).exists():
+            messages.info(request, "Package is not set, This agent already have a package!")
+        else:
+            add_package = AgentPackage.objects.create(agent=selected_agent,created_by=user_obj,package_name=package_name,single_rate=single_rate,
+                        single_dc=single_dc,double_rate=double_rate,double_dc=double_dc,box_rate=box_rate,
+                        box_dc=box_dc,super_rate=super_rate,super_dc=super_dc,first_prize=first_prize,first_dc=first_dc,
+                        second_prize=second_prize,second_dc=second_dc,third_prize=third_prize,third_dc=third_dc,fourth_prize=fourth_prize,
+                        fourth_dc=fourth_dc,fifth_prize=fifth_prize,fifth_dc=fifth_dc,guarantee_prize=guarantee_prize,
+                        guarantee_dc=guarantee_dc,box_first_prize=box_first_prize,box_first_prize_dc=box_first_prize_dc,
+                        box_series_prize=box_series_prize,box_series_dc=box_series_dc,single1_prize=single1_prize,
+                        single1_dc=single1_dc,double2_prize=double2_prize,double2_dc=double2_dc)
+            add_package.save()
+            messages.info(request, "Package created successfully!")
+            return redirect('adminapp:package')
     context = {
         'agents' : agent
     }
     return render(request,'adminapp/new_package.html',context)
+
+def edit_package(request,id):
+    package = AgentPackage.objects.get(id=id)
+    user_obj = request.user
+    if request.method == 'POST':
+        agent_obj = request.POST.get('agent')
+        package_name = request.POST.get('package_name')
+        single_rate = request.POST.get('single_rate')
+        single_dc = request.POST.get('single_dc')
+        double_rate = request.POST.get('double_rate')
+        double_dc = request.POST.get('double_dc')
+        box_rate = request.POST.get('box_rate')
+        box_dc = request.POST.get('box_dc')
+        super_rate = request.POST.get('super_rate')
+        super_dc = request.POST.get('super_dc')
+        first_prize = request.POST.get('first_prize')
+        first_dc = request.POST.get('first_dc')
+        second_prize = request.POST.get('second_prize')
+        second_dc = request.POST.get('second_dc')
+        third_prize = request.POST.get('third_prize')
+        third_dc = request.POST.get('third_dc')
+        fourth_prize = request.POST.get('fourth_prize')
+        fourth_dc = request.POST.get('fourth_dc')
+        fifth_prize = request.POST.get('fifth_prize')
+        fifth_dc = request.POST.get('fifth_dc')
+        guarantee_prize = request.POST.get('guarantee_prize')
+        guarantee_dc = request.POST.get('guarantee_dc')
+        box_first_prize = request.POST.get('box_first_prize')
+        box_first_prize_dc = request.POST.get('box_first_prize_dc')
+        box_series_prize = request.POST.get('box_series_prize')
+        box_series_dc = request.POST.get('box_series_dc')
+        single1_prize = request.POST.get('single1_prize')
+        single1_dc = request.POST.get('single1_dc')
+        double2_prize = request.POST.get('double2_prize')
+        double2_dc = request.POST.get('double2_dc')
+        selected_agent = Agent.objects.get(id=agent_obj)
+        add_package = AgentPackage.objects.update(agent=selected_agent,created_by=user_obj,package_name=package_name,single_rate=single_rate,
+                        single_dc=single_dc,double_rate=double_rate,double_dc=double_dc,box_rate=box_rate,
+                        box_dc=box_dc,super_rate=super_rate,super_dc=super_dc,first_prize=first_prize,first_dc=first_dc,
+                        second_prize=second_prize,second_dc=second_dc,third_prize=third_prize,third_dc=third_dc,fourth_prize=fourth_prize,
+                        fourth_dc=fourth_dc,fifth_prize=fifth_prize,fifth_dc=fifth_dc,guarantee_prize=guarantee_prize,
+                        guarantee_dc=guarantee_dc,box_first_prize=box_first_prize,box_first_prize_dc=box_first_prize_dc,
+                        box_series_prize=box_series_prize,box_series_dc=box_series_dc,single1_prize=single1_prize,
+                        single1_dc=single1_dc,double2_prize=double2_prize,double2_dc=double2_dc)
+        messages.info(request, "Package updated successfully!")
+        return redirect('adminapp:package')
+    context = {
+        'package' : package
+    }
+    return render(request,'adminapp/edit_package.html',context)
+
+def delete_package(request,id):
+    package = AgentPackage.objects.get(id=id)
+    package.delete()
+    return redirect('adminapp:package')
 
 def add_result(request):
     timings = PlayTime.objects.filter().all()
