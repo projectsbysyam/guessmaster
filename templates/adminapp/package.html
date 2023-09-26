@@ -5,15 +5,15 @@
 <div id="main-content">
     <div class="container-fluid">
         <div class="block-header">
-            <!-- <div class="row">
+            <div class="row">
                 <div class="col-lg-5 col-md-8 col-sm-12">                        
-                    <h2><a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth"><i class="fa fa-arrow-left"></i></a> Packages</h2>
+                    <h2><a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth"><i class="fa fa-arrow-left"></i></a> Package</h2>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html"><i class="icon-home"></i></a></li>                            
-                        <li class="breadcrumb-item">Packages</li>
+                        <li class="breadcrumb-item"><a href="{% url 'adminapp:index' %}"><i class="icon-home"></i></a></li>                            
+                        <li class="breadcrumb-item">Package</li>
                     </ul>
                 </div>            
-                -->
+             
             </div>
         </div>
 
@@ -57,25 +57,23 @@
                                                         </label>
                                                     </td>
                                                     <td>
-                                                        <p class="c_name">{{agent.agent_name}}</p>
+                                                        <p class="c_name"></p>
                                                     </td>
                                                     <td>
-                                                        <span class="phone"><i class="zmdi zmdi-phone m-r-10"></i>{{agent.phone_number}}</span>
+                                                        <span class="phone"><i class="zmdi zmdi-phone m-r-10"></i></span>
                                                     </td> 
-                                                    <td>
-                                                        <p class="c_name">{{agent.user.username}}</p>
+                                                    <td></p>
                                                     </td>                                  
                                                    
                                                     <td>
                                                         {% if agent.user.is_active %}      
-                                                        <button  type="button" onclick="agentBan(('{{ agent.id }}'))" class="btn btn-warning" title="Ban"> <i class="fa fa-ban"></i></button>
+                                                        <button  type="button" onclick="editpackage(('{{ agent.id }}'))" class="btn btn-warning" title="Ban"> <i class="fa fa-ban"></i></button>
                                                         {% else %}
-                                                        <button  type="button" onclick="removeBan(('{{ agent.id }}'))" class="btn btn-warning" title="Remove Ban"> <i class="fa fa-check"></i></button>
-                                                        {% endif %}
+                                                       
                                                         <a href="your_link_here" class="btn btn-info" title="Edit">
                                                             <i class="fa fa-edit"></i>
                                                         </a>
-                                                        <button type="button" onclick="agentDelete(('{{ agent.id }}'))" data-type="confirm" class="btn btn-danger js-sweetalert" title="Delete"><i class="fa fa-trash-o"></i></button>
+                                                        <button type="button" onclick="packagedelete(('{{ agent.id }}'))" data-type="confirm" class="btn btn-danger js-sweetalert" title="Delete"><i class="fa fa-trash-o"></i></button>
                                                     </td>
                                                 </tr>
                                                 {% endfor %}
@@ -94,4 +92,31 @@
         </div>
     </div>
 </div>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    function packagedelete(id) {
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this user!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    swal("Poof! This user has been deleted!", {
+                        icon: "success",
+                    });
+                    setTimeout(function () {
+                        window.location.href = "/adminapp/delete-agent/" + id
+                    }, 1000);
+                } else {
+                    swal("It is safe!");
+                }
+            });
+    }
+
+
+</script>
 {% endblock %}
