@@ -26,5 +26,11 @@ urlpatterns = [
     path('edit-bill',views.edit_bill,name="edit_bill"),
     path('change-password',views.change_password,name="change_password"),
 
-    path('play-game/<int:id>',views.play_game,name="play_game")
+    path('play-game/<int:id>',views.play_game,name="play_game"),
+
+
+    path('package',views.package,name="package"),
+    path('new-package',views.new_package,name="new_package"),
+    path('edit-package/<int:id>',views.edit_package,name="edit_package"),
+    path('delete-package/<int:id>',views.delete_package,name="delete_package"),
 ]
