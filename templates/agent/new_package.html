@@ -1,0 +1,229 @@
+{% extends 'agent/partials/base.html' %}
+{% load static %}
+{% block content %}
+<div id="main-content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-lg-5 col-md-8 col-sm-12">                        
+                    <h2><a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth"><i class="fa fa-arrow-left"></i></a> New Package </h2>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'agent:index' %}"><i class="icon-home"></i></a></li>                            
+                        <li class="breadcrumb-item">Package</li>
+                        <li class="breadcrumb-item active">New Package </li>
+                    </ul>
+                </div>            
+             
+            </div>
+        </div>
+                                {% if messages %}
+                                {% for message in messages %}
+                                <div class="alert alert-info">
+                                    {{message}}
+                                </div>
+                                {% endfor %}
+                                {% endif %}
+        <form method="POST">
+        {% csrf_token %}
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="card">
+                    <div class="body">
+                        <div class="row clearfix">
+                            <div class="col-lg-3 col-md-6">
+                                <div class="mb-3">
+                                    <label>Select Dealer</label>
+                                    <select name="dealer" class="form-control show-tick ms select2" data-placeholder="Select">
+                                        {% for dealer in dealers %}
+                                        <option value="{{ dealer.id }}">{{dealer.user}}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="mb-3">
+                                    <div class="form-group">
+                                        <label>Package Name</label>
+                                        <input type="text" name="package_name" class="form-control" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row clearfix">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="body">
+                        <table id="mainTable" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Ticket</th>
+                                    <th>Rate</th>
+                                    <th>DC</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td contenteditable="true" name="single_ticket">Single</td>
+                                    <td contenteditable="true" name="single_rate" style="position: relative;">
+                                        <input type="number" value="10.5" required  step="0.01" name="single_rate" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                    </td>
+                                    <td contenteditable="true" name="single_dc" style="position: relative;">
+                                        <input type="number" value="1.5" required  step="0.01" name="single_dc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td contenteditable="true" name="double_ticket">Double</td>
+                                    <td contenteditable="true" name="double_rate" style="position: relative;">
+                                        <input type="number" value="8.5" required  step="0.01" name="double_rate" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                    </td>
+                                    <td contenteditable="true" name="double_dc" style="position: relative;">
+                                        <input type="number" value="1.2" required  step="0.01" name="double_dc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td contenteditable="true" name="box_ticket">BOX</td>
+                                    <td contenteditable="true" name="box_rate" style="position: relative;">
+                                        <input type="number" value="8.5" required  step="0.01" name="box_rate" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                    </td>
+                                    <td contenteditable="true" name="box_dc" style="position: relative;">
+                                        <input type="number" value="1.2" required  step="0.01" name="box_dc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td contenteditable="true" name="super_ticket">Super</td>
+                                    <td contenteditable="true" name="super_rate" style="position: relative;">
+                                        <input type="number" value="8.5" required  step="0.01" name="super_rate" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                    </td>
+                                    <td contenteditable="true" name="super_dc" style="position: relative;">
+                                        <input type="number" value="1.2" required  step="0.01" name="super_dc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row clearfix">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="body">
+                        <table id="mainTable" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Position</th>
+                                    <th>Win Prize</th>
+                                    <th>DC</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>First</td>
+                                    <td contenteditable="true" name="first_prize" style="position: relative;">
+                                        <input type="number" value="5000" required  step="0.01" name="first_prize" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                    </td>
+                                    <td contenteditable="true" name="first_dc" style="position: relative;">
+                                        <input type="number" value="400" required  step="0.01" name="first_dc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Second</td>
+                                    <td contenteditable="true" name="second_prize" style="position: relative;">
+                                        <input type="number" value="500" required  step="0.01" name="second_prize" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                    </td>
+                                    <td contenteditable="true" name="second_dc" style="position: relative;">
+                                        <input type="number" value="50" required  step="0.01" name="second_dc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Third</td>
+                                    <td contenteditable="true" name="third_prize" style="position: relative;">
+                                        <input type="number" value="250" required  step="0.01" name="third_prize" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                    </td>
+                                    <td contenteditable="true" name="third_dc" style="position: relative;">
+                                        <input type="number" value="30" required  step="0.01" name="third_dc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Fourth</td>
+                                    <td contenteditable="true" name="fourth_prize" style="position: relative;">
+                                        <input type="number" value="100" required  step="0.01" name="fourth_prize" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                    </td>
+                                    <td contenteditable="true" name="fourth_dc" style="position: relative;">
+                                        <input type="number" value="20" required  step="0.01" name="fourth_dc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Fifth</td>
+                                    <td contenteditable="true" name="fifth_prize" style="position: relative;">
+                                        <input type="number" value="50" required  step="0.01" name="fifth_prize" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                    </td>
+                                    <td contenteditable="true" name="fifth_dc" style="position: relative;">
+                                        <input type="number" value="10" required  step="0.01" name="fifth_dc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Guarantee(Six)</td>
+                                    <td contenteditable="true" name="guarantee_prize" style="position: relative;">
+                                        <input type="number" value="20" required  step="0.01" name="guarantee_prize" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                    </td>
+                                    <td contenteditable="true" name="guarantee_dc" style="position: relative;">
+                                        <input type="number" value="0" required  step="0.01" name="guarantee_dc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Box First Prize</td>
+                                    <td contenteditable="true" name="box_first_prize" style="position: relative;">
+                                        <input type="number" value="3000" required  step="0.01" name="box_first_prize" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                    </td>
+                                    <td contenteditable="true" name="box_first_prize_dc" style="position: relative;">
+                                        <input type="number" value="250" required  step="0.01" name="box_first_prize_dc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Box Series</td>
+                                    <td contenteditable="true" name="box_series_prize" style="position: relative;">
+                                        <input type="number" value="800" required  step="0.01" name="box_series_prize" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                    </td>
+                                    <td contenteditable="true" name="box_series_dc" style="position: relative;">
+                                        <input type="number" value="50" required  step="0.01" name="box_series_dc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Single(1)</td>
+                                    <td contenteditable="true" name="single1_prize" style="position: relative;">
+                                        <input type="number" value="100" required  step="0.01" name="single1_prize" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                    </td>
+                                    <td contenteditable="true" name="single1_dc" style="position: relative;">
+                                        <input type="number" value="0" required  step="0.01" name="single1_dc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Double(2)</td>
+                                    <td contenteditable="true" name="double2_prize" style="position: relative;">
+                                        <input type="number" value="700" required  step="0.01" name="double2_prize" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                    </td>
+                                    <td contenteditable="true" name="double2_dc" style="position: relative;">
+                                        <input type="number" value="50" required  step="0.01" name="double2_dc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <button type="submit" class="btn btn-primary">Create</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        </form>
+        
+    </div>
+</div>
+
+
+
+{% endblock %} 
