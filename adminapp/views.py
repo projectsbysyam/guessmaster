@@ -13,7 +13,16 @@ from django.views.decorators.csrf import csrf_exempt
 @admin_required
 @login_required
 def index(request):
-    return render(request,'adminapp/index.html')
+    agent_count = Agent.objects.all().count()
+    dealer_count = Dealer.objects.all().count()
+   
+
+    context = {
+        
+        'agent_count':agent_count,
+        'dealer_count':dealer_count
+    }
+    return render(request,'adminapp/index.html', context)
 
 def agent(request):
     return render(request,'adminapp/customer/agent.html')
@@ -41,8 +50,10 @@ def add_agent(request):
 
 def view_agent(request):
     agents = Agent.objects.filter().all()
+  
     context = {
-        'agents' : agents
+        'agents' : agents,
+       
     }
     return render(request,'adminapp/view_agent.html',context)
 
