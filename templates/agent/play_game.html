@@ -7,13 +7,21 @@
         position: sticky;
         top: 0;
         z-index: 1;
-        background-color: white; /* To make it appear above the content */
+        background-color: white;
+        /* To make it appear above the content */
     }
 </style>
 
 <div id="main-content">
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-info">
+        {{message}}
+    </div>
+    {% endfor %}
+    {% endif %}
+
     <div class="container-fluid">
-        <!-- Advanced Select2 -->
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <div class="card" style="margin-bottom: 10px !important;">
@@ -49,7 +57,8 @@
                                     <button type="button" class="btn btn-danger" id="button3">3</button>
                                 </div>
                                 <label class="control-inline fancy-checkbox ml-auto">
-                                    <input type="checkbox" name="checkbox2" required data-parsley-mincheck="2" data-parsley-errors-container="#error-checkbox2">
+                                    <input type="checkbox" name="checkbox2" required data-parsley-mincheck="2"
+                                        data-parsley-errors-container="#error-checkbox2">
                                     <span>R</span>
                                 </label>
                             </div>
@@ -67,38 +76,28 @@
                             <div class="tab-content" style="padding: 10px !important;">
                                 <div class="tab-pane show active" id="tabSet1">
                                     <ul class="nav nav-tabs-new">
-                                        <li class="nav-item"><a class="nav-link" data-toggle="tab"
-                                                href="">A</a></li>
-                                        <li class="nav-item"><a class="nav-link" data-toggle="tab"
-                                                href="">B</a></li>
-                                        <li class="nav-item"><a class="nav-link" data-toggle="tab"
-                                                href="">C</a></li>
-                                        <li class="nav-item"><a class="nav-link" data-toggle="tab"
-                                                href="">ALL</a></li>
-                                    </ul>  
+                                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="">A</a></li>
+                                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="">B</a></li>
+                                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="">C</a></li>
+                                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="">ALL</a></li>
+                                    </ul>
                                 </div>
                                 <div class="tab-pane" id="tabSet2">
                                     <ul class="nav nav-tabs-new">
-                                        <li class="nav-item"><a class="nav-link" data-toggle="tab"
-                                                href="">AB</a></li>
-                                        <li class="nav-item"><a class="nav-link" data-toggle="tab"
-                                                href="">BC</a></li>
-                                        <li class="nav-item"><a class="nav-link" data-toggle="tab"
-                                                href="">AC</a></li>
-                                        <li class="nav-item"><a class="nav-link" data-toggle="tab"
-                                                href="">ALL</a></li>
+                                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="">AB</a></li>
+                                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="">BC</a></li>
+                                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="">AC</a></li>
+                                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="">ALL</a></li>
                                     </ul>
                                 </div>
                                 <div class="tab-pane" id="tabSet3">
                                     <ul class="nav nav-tabs-new">
-                                        <li class="nav-item"><a class="nav-link" data-toggle="tab"
-                                                href="">Super</a></li>
-                                        <li class="nav-item"><a class="nav-link" data-toggle="tab"
-                                                href="">Box</a></li>
-                                        <li class="nav-item"><a class="nav-link" data-toggle="tab"
-                                                href="">K.Box</a></li>
-                                        <li class="nav-item"><a class="nav-link" data-toggle="tab"
-                                                href="">Both</a></li>
+                                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="">Super</a>
+                                        </li>
+                                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="">Box</a></li>
+                                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="">K.Box</a>
+                                        </li>
+                                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="">Both</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -115,72 +114,33 @@
 
     </div>
 
-    <div class="container-fluid"> 
+    <div class="container-fluid">
         <div class="row clearfix">
             <div class="col-lg-12">
                 <div class="card">
                     <div class="body" style="padding: 10px !important;">
                         <div class="table-container" style="max-height: 300px; overflow-y: auto;">
-                        <table id="mainTable" class="table table-hover" style="table-layout: fixed; width: 100%;">
-                            <thead>
-                                <tr>
-                                    <th colspan="2">Count: 500</th>
-                                    <th colspan="2">AMT: 5000.00</th>
-                                    <th colspan="2">TOT: 6000.00</th>
-                                </tr>
-                                <tr>
-                                    <th>LSK</th>
-                                    <th>No</th>
-                                    <th>Count</th>
-                                    <th>D.AMT</th>
-                                    <th>C.AMT</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Car</td>
-                                    <td>100</td>
-                                    <td>200</td>
-                                    <td>0</td>
-                                    <td>164.00</td>
-                                    <td><button type="button" class="btn btn-info" title="Edit"><i class="fa fa-edit"></i></button></td>
-                                </tr>
-                                <tr>
-                                    <td>Bike</td>
-                                    <td>330</td>
-                                    <td>240</td>
-                                    <td>1</td>
-                                    <td>164.00</td>
-                                    <td><button type="button" class="btn btn-info" title="Edit"><i class="fa fa-edit"></i></button></td>
-                                </tr>
-                                <tr>
-                                    <td>Plane</td>
-                                    <td>430</td>
-                                    <td>540</td>
-                                    <td>3</td>
-                                    <td>164.00</td>
-                                    <td><button type="button" class="btn btn-info" title="Edit"><i class="fa fa-edit"></i></button></td>
-                                </tr>
-                                <tr>
-                                    <td>Yacht</td>
-                                    <td>100</td>
-                                    <td>200</td>
-                                    <td>0</td>
-                                    <td>164.00</td>
-                                    <td><button type="button" class="btn btn-info" title="Edit"><i class="fa fa-edit"></i></button></td>
-                                </tr>
-                                <tr>
-                                    <td>Segway</td>
-                                    <td>330</td>
-                                    <td>240</td>
-                                    <td>1</td>
-                                    <td>164.00</td>
-                                    <td><button type="button" class="btn btn-info" title="Edit"><i class="fa fa-edit"></i></button></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>    
+                            <table id="mainTable" class="table table-hover" style="table-layout: fixed; width: 100%;">
+                                <thead>
+                                    <tr>
+                                        <th colspan="2">Count: 500</th>
+                                        <th colspan="2">AMT: 5000.00</th>
+                                        <th colspan="2">TOT: 6000.00</th>
+                                    </tr>
+                                    <tr>
+                                        <th>LSK</th>
+                                        <th>No</th>
+                                        <th>Count</th>
+                                        <th>D.AMT</th>
+                                        <th>C.AMT</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -191,144 +151,191 @@
 </div>
 
 
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
 
-    <script>
-        // Get references to the buttons
-        var button1 = document.getElementById("button1");
-        var button2 = document.getElementById("button2");
-        var button3 = document.getElementById("button3");
-    
-        // Get references to the input fields
-        var numberInput = document.getElementById("numberInput");
-        var countInput = document.getElementById("countInput");
-    
-        // Add click event listeners to the buttons
-        button1.addEventListener("click", function() {
-            numberInput.maxLength = 1; // Allow only one digit
-            numberInput.focus(); // Set focus to the input field
-        });
-    
-        button2.addEventListener("click", function() {
-            numberInput.maxLength = 2; // Allow two digits
-            numberInput.focus(); // Set focus to the input field
-        });
-    
-        button3.addEventListener("click", function() {
-            numberInput.maxLength = 3; // Allow three digits
-            numberInput.focus(); // Set focus to the input field
-        });
-    
-        // Automatically move focus to the countInput field after entering the number
-        numberInput.addEventListener("input", function() {
-            if (numberInput.value.length === parseInt(numberInput.maxLength)) {
-                countInput.focus(); // Move focus to the countInput field
+<script>
+// Get references to the buttons
+var button1 = document.getElementById("button1");
+var button2 = document.getElementById("button2");
+var button3 = document.getElementById("button3");
+
+// Get references to the input fields
+var numberInput = document.getElementById("numberInput");
+var countInput = document.getElementById("countInput");
+
+// Default to allowing only one digit
+var maxDigits = 1;
+
+// Add click event listeners to the buttons
+button1.addEventListener("click", function () {
+    maxDigits = 1; // Allow only one digit
+    numberInput.value = ""; // Clear the input field
+    numberInput.maxLength = maxDigits; // Update the maxLength
+    numberInput.focus(); // Set focus to the input field
+});
+
+button2.addEventListener("click", function () {
+    maxDigits = 2; // Allow two digits
+    numberInput.value = ""; // Clear the input field
+    numberInput.maxLength = maxDigits; // Update the maxLength
+    numberInput.focus(); // Set focus to the input field
+});
+
+button3.addEventListener("click", function () {
+    maxDigits = 3; // Allow three digits
+    numberInput.value = ""; // Clear the input field
+    numberInput.maxLength = maxDigits; // Update the maxLength
+    numberInput.focus(); // Set focus to the input field
+});
+
+// Automatically move focus to the countInput field after entering the number
+numberInput.addEventListener("input", function () {
+    if (numberInput.value.length === maxDigits) {
+        countInput.focus(); // Move focus to the countInput field
+    }
+});
+
+</script>
+
+
+<script>
+    var agentPackageData = {
+        package_name: "{{ agent_package.package_name }}",
+        single_rate: {{ agent_package.single_rate }},
+        // Add other fields as needed
+    };
+
+    // Example: Accessing single_rate
+    var singleRate = agentPackageData.single_rate;
+    console.log(singleRate);
+    var amounts = {
+        "A": singleRate,
+        "B": singleRate,
+        "C": singleRate,
+        "AB": 30.00,
+        "BC": 25.00,
+    };
+    // Function to calculate and display results based on the selected link
+    // Function to calculate and display results based on the selected link
+function calculateAndDisplay(linkText) {
+    // Get the input values
+    var number = parseFloat(document.getElementById("numberInput").value);
+    var count = parseFloat(document.getElementById("countInput").value);
+
+        // Check if the input values are valid (not NaN)
+        if (isNaN(number) || isNaN(count)) {
+        // Handle invalid input (you can display an error message)
+        console.log("Invalid input. Please enter valid numbers.");
+        return; // Exit the function without adding a row
+    }
+
+    // Calculate results based on the selected link
+    var rate = amounts[linkText];
+    var result1 = (count * rate).toFixed(2);
+    var result2 = (count * (rate + 1.50)).toFixed(2);
+
+    // Create a new row element
+    var newRow = document.createElement("tr");
+
+    // Fill the new row with data
+    newRow.innerHTML = `
+        <td>${linkText}</td>
+        <td>${number}</td>
+        <td>${count}</td>
+        <td>${result1}</td>
+        <td>${result2}</td>
+        <td><button type="button" class="btn btn-info" title="Edit"><i class="fa fa-edit"></i></button></td>
+    `;
+
+    // Find the table body and append the new row
+    var tableBody = document.querySelector("#mainTable tbody");
+    tableBody.appendChild(newRow);
+
+        // If "ALL" is selected from tabSet1, add rows for A, B, and C with the same values
+    if (linkText === "ALL" && document.getElementById("tabSet1").classList.contains("show")) {
+        var allLinkTexts = ["A", "B", "C"];
+        allLinkTexts.forEach(function (allLink) {
+            if (allLink !== "ALL") {
+                var allRow = document.createElement("tr");
+                var allResult1 = (count * amounts[allLink]).toFixed(2);
+                var allResult2 = (count * (amounts[allLink] + 1.50)).toFixed(2);
+                allRow.innerHTML = `
+                    <td>${allLink}</td>
+                    <td>${number}</td>
+                    <td>${count}</td>
+                    <td>${allResult1}</td>
+                    <td>${allResult2}</td>
+                    <td><button type="button" class="btn btn-info" title="Edit"><i class="fa fa-edit"></i></button></td>
+                `;
+                tableBody.appendChild(allRow);
             }
         });
-    </script>
+    }
+
+    // If "ALL" is selected from tabSet2, add rows for AB, BC, and AC with the same values
+    if (linkText === "ALL" && document.getElementById("tabSet2").classList.contains("show")) {
+        var allLinkTexts = ["AB", "BC", "AC"];
+        allLinkTexts.forEach(function (allLink) {
+            if (allLink !== "ALL") {
+                var allRow = document.createElement("tr");
+                var allResult1 = (count * amounts[allLink]).toFixed(2);
+                var allResult2 = (count * (amounts[allLink] + 1.50)).toFixed(2);
+                allRow.innerHTML = `
+                    <td>${allLink}</td>
+                    <td>${number}</td>
+                    <td>${count}</td>
+                    <td>${allResult1}</td>
+                    <td>${allResult2}</td>
+                    <td><button type="button" class="btn btn-info" title="Edit"><i class="fa fa-edit"></i></button></td>
+                `;
+                tableBody.appendChild(allRow);
+            }
+        });
+    }
+}
+
+
+
+
+// Attach click event listeners to your tabs/links
+var tabLinks = document.querySelectorAll(".nav-link");
+tabLinks.forEach(function (link) {
+    link.addEventListener("click", function () {
+        calculateAndDisplay(link.textContent);
+    });
+});
+
+// Initial calculation and display (you can update this as needed)
+calculateAndDisplay("A"); // Default to "A" when the page loads
+
+</script>
 
 
 
 <script>
-    var amounts = {
-    "A": 10.50,
-    "B": 20.75,
-    "C": 15.25,
-    "AB": 30.00,
-    "BC": 25.00,
-    // Add more linkText-amount pairs as needed
-    };
-    // Function to calculate and display results based on the selected link
-    function calculateAndDisplay(linkText) { 
-        console.log(linkText)
-        // Get the input values
-        var number = parseFloat(document.getElementById("numberInput").value);
-        var count = parseFloat(document.getElementById("countInput").value);
-
-        console.log(number)
-
-        console.log(count)
-
-        // Calculate results based on the selected link
-        var result1, result2, result3; // Calculate your results here based on linkText
-
-        var rate = amounts[linkText];
-
-        result1 = (count * rate).toFixed(2);
-
-        console.log(result1)
-
-        result2 = (count * (rate + 1.50)).toFixed(2);
-
-        // Update the table with the calculated results
-        document.getElementById("mainTable").innerHTML = `
-        <thead>
-                                <tr>
-                                    <th colspan="2">Count: 500</th>
-                                    <th colspan="2">AMT: 5000.00</th>
-                                    <th colspan="2">TOT: 6000.00</th>
-                                </tr>
-                                <tr>
-                                    <th>LSK</th>
-                                    <th>No</th>
-                                    <th>Count</th>
-                                    <th>D.AMT</th>
-                                    <th>C.AMT</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-            <tbody>
-                <tr>
-                    <td>${linkText}</td>
-                    <td>${number}</td>
-                    <td>${count}</td>
-                    <td>${result1}</td>
-                    <td>${result2}</td>
-                    <td><button type="button" class="btn btn-info" title="Edit"><i class="fa fa-edit"></i></button></td>
-                </tr>
-                <!-- Add more rows as needed -->
-            </tbody>
-        `;
-    }
-
-    // Attach click event listeners to your tabs/links
-    var tabLinks = document.querySelectorAll(".nav-link");
-    tabLinks.forEach(function (link) {
-        link.addEventListener("click", function () {
-            calculateAndDisplay(link.textContent);
-        });
+    // Add event listeners to buttons
+    document.getElementById("button1").addEventListener("click", function () {
+        // Show tabSet1 and hide others
+        document.getElementById("tabSet1").classList.add("show", "active");
+        document.getElementById("tabSet2").classList.remove("show", "active");
+        document.getElementById("tabSet3").classList.remove("show", "active");
     });
 
-    // Initial calculation and display (you can update this as needed)
-    calculateAndDisplay("A"); // Default to "A" when the page loads
+    document.getElementById("button2").addEventListener("click", function () {
+        // Show tabSet2 and hide others
+        document.getElementById("tabSet1").classList.remove("show", "active");
+        document.getElementById("tabSet2").classList.add("show", "active");
+        document.getElementById("tabSet3").classList.remove("show", "active");
+    });
+
+    document.getElementById("button3").addEventListener("click", function () {
+        // Show tabSet3 and hide others
+        document.getElementById("tabSet1").classList.remove("show", "active");
+        document.getElementById("tabSet2").classList.remove("show", "active");
+        document.getElementById("tabSet3").classList.add("show", "active");
+    });
 </script>
 
-    
 
-    <script>
-        // Add event listeners to buttons
-document.getElementById("button1").addEventListener("click", function() {
-    // Show tabSet1 and hide others
-    document.getElementById("tabSet1").classList.add("show", "active");
-    document.getElementById("tabSet2").classList.remove("show", "active");
-    document.getElementById("tabSet3").classList.remove("show", "active");
-});
-
-document.getElementById("button2").addEventListener("click", function() {
-    // Show tabSet2 and hide others
-    document.getElementById("tabSet1").classList.remove("show", "active");
-    document.getElementById("tabSet2").classList.add("show", "active");
-    document.getElementById("tabSet3").classList.remove("show", "active");
-});
-
-document.getElementById("button3").addEventListener("click", function() {
-    // Show tabSet3 and hide others
-    document.getElementById("tabSet1").classList.remove("show", "active");
-    document.getElementById("tabSet2").classList.remove("show", "active");
-    document.getElementById("tabSet3").classList.add("show", "active");
-});
-
-    </script>
-
-    {% endblock %}
+{% endblock %}
