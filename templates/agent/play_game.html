@@ -94,7 +94,7 @@
                                     <ul class="nav nav-tabs-new">
                                         <li class="nav-item"><a class="nav-link" data-toggle="tab" href="">Super</a>
                                         </li>
-                                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="">Box</a></li>
+                                        <li class="nav-item"><a class="nav-link" data-toggle="tab" id="ButtonBox" href="">Box</a></li>
                                         <li class="nav-item"><a class="nav-link" data-toggle="tab" href="">K.Box</a>
                                         </li>
                                         <li class="nav-item"><a class="nav-link" data-toggle="tab" href="">Both</a></li>
@@ -155,44 +155,40 @@
 
 
 <script>
-// Get references to the buttons
+    
 var button1 = document.getElementById("button1");
 var button2 = document.getElementById("button2");
 var button3 = document.getElementById("button3");
 
-// Get references to the input fields
 var numberInput = document.getElementById("numberInput");
 var countInput = document.getElementById("countInput");
 
-// Default to allowing only one digit
 var maxDigits = 1;
 
-// Add click event listeners to the buttons
 button1.addEventListener("click", function () {
-    maxDigits = 1; // Allow only one digit
-    numberInput.value = ""; // Clear the input field
-    numberInput.maxLength = maxDigits; // Update the maxLength
-    numberInput.focus(); // Set focus to the input field
+    maxDigits = 1;
+    numberInput.value = "";
+    numberInput.maxLength = maxDigits;
+    numberInput.focus();
 });
 
 button2.addEventListener("click", function () {
-    maxDigits = 2; // Allow two digits
-    numberInput.value = ""; // Clear the input field
-    numberInput.maxLength = maxDigits; // Update the maxLength
-    numberInput.focus(); // Set focus to the input field
+    maxDigits = 2;
+    numberInput.value = "";
+    numberInput.maxLength = maxDigits;
+    numberInput.focus();
 });
 
 button3.addEventListener("click", function () {
-    maxDigits = 3; // Allow three digits
-    numberInput.value = ""; // Clear the input field
-    numberInput.maxLength = maxDigits; // Update the maxLength
-    numberInput.focus(); // Set focus to the input field
+    maxDigits = 3;
+    numberInput.value = "";
+    numberInput.maxLength = maxDigits;
+    numberInput.focus();
 });
 
-// Automatically move focus to the countInput field after entering the number
 numberInput.addEventListener("input", function () {
     if (numberInput.value.length === maxDigits) {
-        countInput.focus(); // Move focus to the countInput field
+        countInput.focus();
     }
 });
 
@@ -203,42 +199,59 @@ numberInput.addEventListener("input", function () {
     var agentPackageData = {
         package_name: "{{ agent_package.package_name }}",
         single_rate: {{ agent_package.single_rate }},
-        // Add other fields as needed
+        single_dc: {{agent_package.single_dc}},
+        double_rate: {{agent_package.double_rate}},
+        double_dc: {{agent_package.double_dc}},
+        super_rate: {{agent_package.super_rate}},
+        super_dc: {{agent_package.super_dc}},
+        box_rate: {{agent_package.box_rate}},
+        box_dc: {{agent_package.box_dc}}
     };
-
-    // Example: Accessing single_rate
     var singleRate = agentPackageData.single_rate;
-    console.log(singleRate);
+    var singleDC = agentPackageData.single_dc;
+    var doubleRate = agentPackageData.double_rate;
+    var doubleDC = agentPackageData.double_dc;
+    var superRate = agentPackageData.super_rate;
+    var superDC = agentPackageData.super_dc;
+    var boxRate = agentPackageData.box_rate;
+    var boxDC = agentPackageData.box_dc;
+    console.log(superDC)
     var amounts = {
         "A": singleRate,
         "B": singleRate,
         "C": singleRate,
-        "AB": 30.00,
-        "BC": 25.00,
+        "AB": doubleRate,
+        "BC": doubleRate,
+        "AC": doubleRate,
+        "Super": superRate,
+        "Box": boxRate,
     };
-    // Function to calculate and display results based on the selected link
-    // Function to calculate and display results based on the selected link
+    var dcs = {
+        "A": singleDC,
+        "B": singleDC,
+        "C": singleDC,
+        "AB": doubleDC,
+        "BC": doubleDC,
+        "AC": doubleDC,
+        "Super": superDC,
+        "Box": boxDC,
+    }
 function calculateAndDisplay(linkText) {
-    // Get the input values
     var number = parseFloat(document.getElementById("numberInput").value);
     var count = parseFloat(document.getElementById("countInput").value);
 
-        // Check if the input values are valid (not NaN)
         if (isNaN(number) || isNaN(count)) {
-        // Handle invalid input (you can display an error message)
         console.log("Invalid input. Please enter valid numbers.");
-        return; // Exit the function without adding a row
+        return; 
     }
 
-    // Calculate results based on the selected link
     var rate = amounts[linkText];
+    var dc = dcs[linkText];
     var result1 = (count * rate).toFixed(2);
-    var result2 = (count * (rate + 1.50)).toFixed(2);
+    var result2 = (count * (rate + dc)).toFixed(2);
 
-    // Create a new row element
     var newRow = document.createElement("tr");
 
-    // Fill the new row with data
     newRow.innerHTML = `
         <td>${linkText}</td>
         <td>${number}</td>
@@ -248,18 +261,17 @@ function calculateAndDisplay(linkText) {
         <td><button type="button" class="btn btn-info" title="Edit"><i class="fa fa-edit"></i></button></td>
     `;
 
-    // Find the table body and append the new row
     var tableBody = document.querySelector("#mainTable tbody");
     tableBody.appendChild(newRow);
 
-        // If "ALL" is selected from tabSet1, add rows for A, B, and C with the same values
+
     if (linkText === "ALL" && document.getElementById("tabSet1").classList.contains("show")) {
         var allLinkTexts = ["A", "B", "C"];
         allLinkTexts.forEach(function (allLink) {
             if (allLink !== "ALL") {
                 var allRow = document.createElement("tr");
                 var allResult1 = (count * amounts[allLink]).toFixed(2);
-                var allResult2 = (count * (amounts[allLink] + 1.50)).toFixed(2);
+                var allResult2 = (count * (amounts[allLink] + dcs[allLink])).toFixed(2);
                 allRow.innerHTML = `
                     <td>${allLink}</td>
                     <td>${number}</td>
@@ -273,14 +285,13 @@ function calculateAndDisplay(linkText) {
         });
     }
 
-    // If "ALL" is selected from tabSet2, add rows for AB, BC, and AC with the same values
     if (linkText === "ALL" && document.getElementById("tabSet2").classList.contains("show")) {
         var allLinkTexts = ["AB", "BC", "AC"];
         allLinkTexts.forEach(function (allLink) {
             if (allLink !== "ALL") {
                 var allRow = document.createElement("tr");
                 var allResult1 = (count * amounts[allLink]).toFixed(2);
-                var allResult2 = (count * (amounts[allLink] + 1.50)).toFixed(2);
+                var allResult2 = (count * (amounts[allLink] + dcs[allLink])).toFixed(2);
                 allRow.innerHTML = `
                     <td>${allLink}</td>
                     <td>${number}</td>
@@ -293,44 +304,113 @@ function calculateAndDisplay(linkText) {
             }
         });
     }
+} 
+
+var tabLinks = document.querySelectorAll(".nav-link");
+tabLinks.forEach(function (link) {
+    link.addEventListener("click", function () {
+        calculateAndDisplay(link.textContent);
+        removeRowWithContent("ALL");
+        removeRowWithContent("Box");
+    });
+});
+
+calculateAndDisplay("A");
+
+function removeRowWithContent(content) {
+    var table = document.querySelector("#mainTable");
+    var rows = table.getElementsByTagName("tr");
+    for (var i = 0; i < rows.length; i++) {
+        var row = rows[i];
+        var cells = row.getElementsByTagName("td");
+        for (var j = 0; j < cells.length; j++) {
+            if (cells[j].textContent === content) {
+                row.parentNode.removeChild(row);
+                return;
+            }
+        }
+    }
 }
 
 
 
 
-// Attach click event listeners to your tabs/links
-var tabLinks = document.querySelectorAll(".nav-link");
-tabLinks.forEach(function (link) {
-    link.addEventListener("click", function () {
-        calculateAndDisplay(link.textContent);
-    });
-});
+</script>
 
-// Initial calculation and display (you can update this as needed)
-calculateAndDisplay("A"); // Default to "A" when the page loads
+<script>
+function getCombinations(inputNumber) {
+    const numberStr = inputNumber.toString();
+    const result = [];
+    if (numberStr.length !== 3) {
+        return result;
+    }
+
+    for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+            for (let k = 0; k < 3; k++) {
+                if (i !== j && i !== k && j !== k) {
+                    const combination = parseInt(numberStr[i] + numberStr[j] + numberStr[k]);
+                    if (!result.includes(combination)) {
+                        result.push(combination);
+                    }
+                }
+            }
+        }
+    }
+
+    return result;
+}
+
+
+document.getElementById("ButtonBox").addEventListener("click", function () {
+    var number = parseFloat(document.getElementById("numberInput").value);
+    var count = parseFloat(document.getElementById("countInput").value);
+
+    if (isNaN(number) || isNaN(count)) {
+        console.log("Invalid input. Please enter valid numbers.");
+        return;
+    }
+
+    var linkText = "Super";
+    const inputNumber = number;
+    const combinations = getCombinations(inputNumber);
+    console.log(combinations,"combinations");
+
+    var tableBody = document.querySelector("#mainTable tbody");
+
+    combinations.forEach(function (combination) {
+        var allRow = document.createElement("tr");
+        var allResult1 = (count * amounts[linkText]).toFixed(2);
+        var allResult2 = (count * (amounts[linkText] + dcs[linkText])).toFixed(2);
+        allRow.innerHTML = `
+        <td>${linkText}</td>
+        <td>${combination}</td> <!-- Display the combination in this cell -->
+        <td>${count}</td>
+        <td>${allResult1}</td>
+        <td>${allResult2}</td>
+        <td><button type="button" class="btn btn-info" title="Edit"><i class="fa fa-edit"></i></button></td>
+        `;
+        tableBody.appendChild(allRow);
+  });
+});
 
 </script>
 
 
-
 <script>
-    // Add event listeners to buttons
     document.getElementById("button1").addEventListener("click", function () {
-        // Show tabSet1 and hide others
         document.getElementById("tabSet1").classList.add("show", "active");
         document.getElementById("tabSet2").classList.remove("show", "active");
         document.getElementById("tabSet3").classList.remove("show", "active");
     });
 
     document.getElementById("button2").addEventListener("click", function () {
-        // Show tabSet2 and hide others
         document.getElementById("tabSet1").classList.remove("show", "active");
         document.getElementById("tabSet2").classList.add("show", "active");
         document.getElementById("tabSet3").classList.remove("show", "active");
     });
 
     document.getElementById("button3").addEventListener("click", function () {
-        // Show tabSet3 and hide others
         document.getElementById("tabSet1").classList.remove("show", "active");
         document.getElementById("tabSet2").classList.remove("show", "active");
         document.getElementById("tabSet3").classList.add("show", "active");
