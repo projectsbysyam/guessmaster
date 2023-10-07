@@ -7,6 +7,11 @@ app_name = 'dealer'
 urlpatterns = [
 
     path("index",views.index,name='index'),
+    path('booking',views.booking,name="booking"), 
+    path('result',views.result,name="result"), 
+    path('edit-bill',views.edit_bill,name="edit_bill"),
+
+
 
 
 
