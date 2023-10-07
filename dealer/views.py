@@ -21,3 +21,17 @@ def edit_bill(request):
 
 def sales_report(request):
     return render(request,'dealer/sales_report.html') 
+
+def daily_report(request):
+    return render(request,'dealer/daily_report.html')
+
+def winning_report(request):
+    return render(request,'dealer/winning_report.html') 
+def count_salereport(request):
+    return render(request,'dealer/count_salereport.html') 
+
+def winning_countreport(request):
+    return render(request,'dealer/winning_countreport.html') 
+
+def balance_report(request):
+    return render(request,'dealer/balance_report.html') 

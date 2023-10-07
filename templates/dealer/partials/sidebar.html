@@ -49,12 +49,13 @@
                                 <!-- <li><a href="ui-typography.html">Customer</a></li> -->
                                 
                                 <li><a href="{% url 'dealer:sales_report' %}">Sales report</a></li>
-                                <li><a href="ui-bootstrap.html"> Daily Report</a></li>
-                                <li><a href="ui-icons.html">Winning Report</a></li>
-                                <li><a href="ui-notifications.html">Sales Count Report</a></li>
+                                <li><a href="{% url 'dealer:daily_report' %}"> Daily Report</a></li>
+                                <li><a href="{% url 'dealer:winning_report' %}">Winning Report</a></li>   
 
-                                <li><a href="ui-dialogs.html">Count Winning Report</a></li> 
-                                <li><a href="ui-colors.html">Balance Report</a></li>                                   
+                                <li><a href="{% url 'dealer:count_salereport' %}">Sales Count Report</a></li>
+
+                                <li><a href="{% url 'dealer:winning_countreport' %}">Count Winning Report</a></li> 
+                                <li><a href="{% url 'dealer:balance_report' %}">Balance Report</a></li>                             
                               
                            
                             </ul>
