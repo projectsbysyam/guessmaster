@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'adminapp',
     'website',
     'agent',
-    'dealer'
+    'dealer',
 ]
 
 MIDDLEWARE = [

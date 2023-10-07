@@ -18,3 +18,6 @@ def result(request):
 
 def edit_bill(request):
     return render(request,'dealer/edit_bill.html')
+
+def sales_report(request):
+    return render(request,'dealer/sales_report.html') 

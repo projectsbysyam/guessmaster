@@ -3,13 +3,14 @@ from django.contrib.auth.decorators import login_required
 from website.forms import LoginForm
 from website.forms import DealerRegistration,UserUpdateForm
 from website.models import User,Dealer,Agent
-from adminapp.models import PlayTime
+from adminapp.models import PlayTime, AgentPackage
 from .models import DealerPackage
 from django.contrib import messages
 from django.views.decorators.csrf import csrf_exempt
 from website.decorators import dealer_required, agent_required
 from django.utils import timezone
 from pytz import timezone as pytz_timezone
+
 
 # Create your views here.
 @login_required
@@ -137,19 +138,25 @@ def edit_bill(request):
 
 def change_password(request):
     return render(request,'agent/change_password.html')
+
 def play_game(request,id):
     print(id)
+    agent_package = []
     time = PlayTime.objects.get(id=id)
     print(time.end_time)
-    agent = Agent.objects.get(user=request.user)
-    dealers = Dealer.objects.filter(agent=agent).all()
+    agent_obj = Agent.objects.get(user=request.user)
+    if AgentPackage.objects.filter(agent=agent_obj).exists():
+        agent_package = AgentPackage.objects.get(agent=agent_obj)
+        print(agent_package.single_rate)
+    else:
+        messages.info(request,"There is no package for this user!")
+    dealers = Dealer.objects.filter(agent=agent_obj).all()
     context = {
         'time' : time,
-        'dealers' : dealers
+        'dealers' : dealers,
+        'agent_package' : agent_package
     }
     return render(request,'agent/play_game.html',context)
-
-
 
 def package(request):
     packages = DealerPackage.objects.filter().all()
