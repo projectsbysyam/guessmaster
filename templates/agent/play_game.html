@@ -155,7 +155,7 @@
 
 
 <script>
-    
+
 var button1 = document.getElementById("button1");
 var button2 = document.getElementById("button2");
 var button3 = document.getElementById("button3");
@@ -338,6 +338,7 @@ function removeRowWithContent(content) {
 </script>
 
 <script>
+// Define the getCombinations function outside of the click event listener
 function getCombinations(inputNumber) {
     const numberStr = inputNumber.toString();
     const result = [];
@@ -345,11 +346,12 @@ function getCombinations(inputNumber) {
         return result;
     }
 
+    // Generate all combinations with unique digits
     for (let i = 0; i < 3; i++) {
         for (let j = 0; j < 3; j++) {
             for (let k = 0; k < 3; k++) {
                 if (i !== j && i !== k && j !== k) {
-                    const combination = parseInt(numberStr[i] + numberStr[j] + numberStr[k]);
+                    const combination = numberStr[i] + numberStr[j] + numberStr[k];
                     if (!result.includes(combination)) {
                         result.push(combination);
                     }
@@ -360,6 +362,7 @@ function getCombinations(inputNumber) {
 
     return result;
 }
+
 
 
 document.getElementById("ButtonBox").addEventListener("click", function () {
