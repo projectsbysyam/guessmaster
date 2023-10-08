@@ -95,7 +95,7 @@
                                         <li class="nav-item"><a class="nav-link" data-toggle="tab" href="">Super</a>
                                         </li>
                                         <li class="nav-item"><a class="nav-link" data-toggle="tab" id="ButtonBox" href="">Box</a></li>
-                                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="">K.Box</a>
+                                        <li class="nav-item"><a class="nav-link" data-toggle="tab" id="KBox" href="">K.Box</a>
                                         </li>
                                         <li class="nav-item"><a class="nav-link" data-toggle="tab" href="">Both</a></li>
                                     </ul>
@@ -205,7 +205,7 @@ numberInput.addEventListener("input", function () {
         super_rate: {{agent_package.super_rate}},
         super_dc: {{agent_package.super_dc}},
         box_rate: {{agent_package.box_rate}},
-        box_dc: {{agent_package.box_dc}}
+        box_dc: {{agent_package.box_dc}},
     };
     var singleRate = agentPackageData.single_rate;
     var singleDC = agentPackageData.single_dc;
@@ -225,6 +225,7 @@ numberInput.addEventListener("input", function () {
         "AC": doubleRate,
         "Super": superRate,
         "Box": boxRate,
+        "K.Box": boxRate
     };
     var dcs = {
         "A": singleDC,
@@ -235,6 +236,7 @@ numberInput.addEventListener("input", function () {
         "AC": doubleDC,
         "Super": superDC,
         "Box": boxDC,
+        "K.Box": boxDC
     }
 function calculateAndDisplay(linkText) {
     var number = parseFloat(document.getElementById("numberInput").value);
@@ -311,7 +313,7 @@ tabLinks.forEach(function (link) {
     link.addEventListener("click", function () {
         calculateAndDisplay(link.textContent);
         removeRowWithContent("ALL");
-        removeRowWithContent("Box");
+        removeRowWithContent("K.Box");
     });
 });
 
@@ -364,7 +366,6 @@ function getCombinations(inputNumber) {
 }
 
 
-
 document.getElementById("ButtonBox").addEventListener("click", function () {
     var number = parseFloat(document.getElementById("numberInput").value);
     var count = parseFloat(document.getElementById("countInput").value);
@@ -399,6 +400,38 @@ document.getElementById("ButtonBox").addEventListener("click", function () {
 
 </script>
 
+
+<script>
+    document.getElementById("KBox").addEventListener("click", function () {
+        var number = parseFloat(document.getElementById("numberInput").value);
+        var count = parseFloat(document.getElementById("countInput").value);
+    
+        if (isNaN(number) || isNaN(count)) {
+            console.log("Invalid input. Please enter valid numbers.");
+            return;
+        }
+    
+        var linkText = "Box"; // Set the linkText to "Box"
+        
+        // Create a new row for "Box"
+        var newRow = document.createElement("tr");
+        var result1 = (count * amounts[linkText]).toFixed(2);
+        var result2 = (count * (amounts[linkText] + dcs[linkText])).toFixed(2);
+        newRow.innerHTML = `
+            <td>${linkText}</td>
+            <td>${number}</td>
+            <td>${count}</td>
+            <td>${result1}</td>
+            <td>${result2}</td>
+            <td><button type="button" class="btn btn-info" title="Edit"><i class="fa fa-edit"></i></button></td>
+        `;
+        
+        // Add the new row to the table
+        var tableBody = document.querySelector("#mainTable tbody");
+        tableBody.appendChild(newRow);
+    });
+    </script>
+    
 
 <script>
     document.getElementById("button1").addEventListener("click", function () {
