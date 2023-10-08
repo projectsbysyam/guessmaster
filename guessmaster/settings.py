@@ -132,3 +132,5 @@ STATIC_ROOT = BASE_DIR / "assets"
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = "website.User"
+
+

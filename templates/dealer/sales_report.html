@@ -1,4 +1,4 @@
-{% extends 'agent/partials/base.html' %}
+{% extends 'dealer/partials/base.html' %}
 {% load static %}
 {% block content %}
 
@@ -10,7 +10,7 @@
                 <div class="col-lg-5 col-md-8 col-sm-12">                        
                     <h2><a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth"><i class="fa fa-arrow-left"></i></a> Sales Report</h2>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{% url 'agent:index' %}"><i class="icon-home"></i></a></li>                            
+                        <li class="breadcrumb-item"><a href="{% url 'dealer:index' %}"><i class="icon-home"></i></a></li>                            
                         <!-- <li class="breadcrumb-item">Pages</li> -->
                         <li class="breadcrumb-item active">Sales Report</li>
                     </ul>
@@ -33,20 +33,7 @@
                                                         <input type="date" value="2017-06-01" class="form-control">
                                                     </div>        
                                                 </div>
-                                                <div class="col-lg-2 col-md-6 col-sm-12">
-                                                    <div class="form-group">
-                                                        <label for="tax-id" class="control-label">All Dealer</label>
-                                                        <div class="mb-3">
-                                                            
-                                                            <select class="form-control show-tick ms select2" data-placeholder="Select">
-                                                                <option></option>
-                                                                <option>1</option>
-                                                                <option>2</option>
-                                                                <option>3</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                               
                                               
                                                 <div class="col-lg-2 col-md-6 col-sm-12">
                                                     <div class="form-group">
@@ -54,7 +41,15 @@
                                                         <input type="date" value="2017-06-01" class="form-control">
                                                     </div> 
                                                 </div>
-
+                                                <div class="col-lg-2 col-md-6 col-sm-12">
+                                                    <div class="form-group">
+                                                        <li>
+                                                    <label class="fancy-checkbox">
+                                                        <input type="checkbox"><span>Expand</span></label>
+                                                </li>
+                                                    </div> 
+                                                </div>
+                                               
                         </ul>
                      
                         <ul class="nav nav-tabs-new2">
@@ -83,17 +78,7 @@
                                                         <th>C.Amount</th>
                                                     </tr>
                                                 </thead>
-                                                <tfoot>
-                                                    <tr>
-                                                        <th></th>
-                                                        <th></th>
-                                                        <th></th>
-                                                        <th>COUNT =</th>
-                                                        <th> A.Amount   =</th>
-                                                        <th>S.Amount = </th>
-                                                    </tr>
-                                                    
-                                                </tfoot>
+                                                
                                                 <tbody>
                                                     <tr>
                                                         <td>Tiger Nixon</td>
@@ -139,17 +124,7 @@
                                                         <th>C.Amount</th>
                                                     </tr>
                                                 </thead>
-                                                <tfoot>
-                                                    <tr>
-                                                        <th></th>
-                                                        <th></th>
-                                                        <th></th>
-                                                        <th>COUNT =</th>
-                                                        <th> A.Amount   =</th>
-                                                        <th>S.Amount = </th>
-                                                    </tr>
-                                                    
-                                                </tfoot>
+                                             
                                                 <tbody>
                                                     <tr>
                                                         <td>Tiger Nixon</td>
@@ -192,17 +167,7 @@
                                                         <th>C.Amount</th>
                                                     </tr>
                                                 </thead>
-                                                <tfoot>
-                                                    <tr>
-                                                        <th></th>
-                                                        <th></th>
-                                                        <th></th>
-                                                        <th>COUNT =</th>
-                                                        <th> A.Amount   =</th>
-                                                        <th>S.Amount = </th>
-                                                    </tr>
-                                                    
-                                                </tfoot>
+                                              
                                                 <tbody>
                                                     <tr>
                                                         <td>Tiger Nixon</td>
@@ -245,17 +210,7 @@
                                                         <th>C.Amount</th>
                                                     </tr>
                                                 </thead>
-                                                <tfoot>
-                                                    <tr>
-                                                        <th></th>
-                                                        <th></th>
-                                                        <th></th>
-                                                        <th>COUNT =</th>
-                                                        <th> A.Amount   =</th>
-                                                        <th>S.Amount = </th>
-                                                    </tr>
-                                                    
-                                                </tfoot>
+                                               
                                                 <tbody>
                                                     <tr>
                                                         <td>Tiger Nixon</td>
@@ -299,17 +254,7 @@
                                                         <th>C.Amount</th>
                                                     </tr>
                                                 </thead>
-                                                <tfoot>
-                                                    <tr>
-                                                        <th></th>
-                                                        <th></th>
-                                                        <th></th>
-                                                        <th>COUNT =</th>
-                                                        <th> A.Amount   =</th>
-                                                        <th>S.Amount = </th>
-                                                    </tr>
-                                                    
-                                                </tfoot>
+                                              
                                                 <tbody>
                                                     <tr>
                                                         <td>Tiger Nixon</td>
@@ -338,24 +283,32 @@
                                 </div>
                                 
                             </div>
-                            <!-- <div class=" row text-right">
-                                        
-                                <div class="col-lg-2 col-md-6 col-sm-12">
-                                    <div class="form-group">
-                                                <br><button type="button" class="btn btn-primary">print</button>
-                                               
-                                            </div>
-                                    
-                                </div>
-                                <div class="col-lg-2 col-md-6 col-sm-12">
-                                    <div class="form-group">
-                                        <label for="tax-id" class="control-label"></label>
-                                        <input type="text" placeholder="NET AMOUNT" class="form-control">
-                                    </div>  
-                                </div>
-                                
-                            
-                        </div> -->
+                            <div class="body">
+                                <div class=" row clearfix">
+                                   
+                           <div class="col-lg-3 col--md-6 col-sm-12">
+                               <div class="form-group">
+                                   <label for="tax-id" class="control-label">COUNT</label>
+                                   <input type="number"  class="form-control">
+                               </div> 
+                           </div>
+                           
+                               <div class="col-lg-3 col-md-6 col-sm-12">
+                                  <div class="form-group">
+                                      <label for="tax-id" class="control-label">A Amount</label>
+                                      <input type="number"  class="form-control">
+                                  </div> 
+                              </div>
+                              <div class="col-lg-3 col-md-6 col-sm-12">
+                               <div class="form-group">
+                                   <label for="tax-id" class="control-label">C Amount</label>
+                                   <input type="number"  class="form-control">
+                               </div> 
+                           </div>
+                        
+                           
+                       </div>
+                           </div>
                     </div>
                     </div>             
             </div>

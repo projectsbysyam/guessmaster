@@ -22,7 +22,7 @@
             <div class="col-lg-12 col-md-12">
                 <div class="card">
                    
-                    <div class="body">
+                   
                         <ul class="nav nav-tabs-new2">
                             <li class="nav-item"><a class="nav-link active show" data-toggle="tab" href="#Home-new2">Set Monitor </a></li>
                             <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#Profile-new2">All</a></li>
@@ -34,49 +34,103 @@
                         <div class="tab-content">
                             <div class="tab-pane show active" id="Home-new2">
                                 <div class="card">
-                                    <div class="header">
-                                        <!-- <h2>Basic Example 8</h2> -->
-                                    </div>
-                                    <div class="body">
-                                        <div class="table-responsive">
-                                            <table class="table center-aligned-table">
-                                                <thead>
-                                                <tr>
-                                                    <th>SUPER</th>
-                                                    <th>BOX</th>
-                                                    <th>AB</th>
-                                                    <th>BC</th>
-                                                    <th>AC</th>
-                                                    <th>A</th>
-                                                    <th>B</th>
-                                                    <th>C</th>
-                                                    <th></th>
-                                                    
-                                                    
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                             
-                                                <tr>
-                                                    <td>3</td>
-                                                    <td>3</td>
-                                                    <td>3 </td>
-                                                    <td>5</td>
-                                                    <td>7</td>
-                                                    <td>8 </td>
-                                                    <td>8 </td>
-                                                    <td>7</td>
-                                                    <td><button type="button" class="btn btn-primary">SUBMIT</button>
-                                                    </td>
-                                                    <!-- <td><label class="badge">Approved</label></td>
-                                                    <td><a href="javascript:void(0);" class="btn btn-success btn-sm">View Order</a></td>
-                                                    <td><button class="btn btn-danger btn-sm"><i class="icon-trash"></i></button></td> -->
-                                                </tr>
-                                                
-                                                </tbody>
-                                            </table>
+                                    
+                                    
+                                        <div class="row clearfix">
+                                            <div class="col-lg-12">
+                                                <div class="card">
+                                                   
+                                                        <table id="mainTable" class="table table-hover">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Ticket</th>
+                                                                    <th>Rate</th>
+                                                                   
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>SUPER</td>
+                                                                    <td contenteditable="true" name="first_prize" style="position: relative;">
+                                                                        <input type="number" value="5000" required  step="0.01" name="first_prize" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                                                    </td>
+                                                                    <td contenteditable="true" name="first_dc" style="position: relative;">
+                                                                        <input type="number" value="400" required  step="0.01" name="first_dc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>BOX</td>
+                                                                    <td contenteditable="true" name="second_prize" style="position: relative;">
+                                                                        <input type="number" value="500" required  step="0.01" name="second_prize" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                                                    </td>
+                                                                    <td contenteditable="true" name="second_dc" style="position: relative;">
+                                                                        <input type="number" value="50" required  step="0.01" name="second_dc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>AB</td>
+                                                                    <td contenteditable="true" name="third_prize" style="position: relative;">
+                                                                        <input type="number" value="250" required  step="0.01" name="third_prize" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                                                    </td>
+                                                                    <td contenteditable="true" name="third_dc" style="position: relative;">
+                                                                        <input type="number" value="30" required  step="0.01" name="third_dc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>BC</td>
+                                                                    <td contenteditable="true" name="fourth_prize" style="position: relative;">
+                                                                        <input type="number" value="100" required  step="0.01" name="fourth_prize" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                                                    </td>
+                                                                    <td contenteditable="true" name="fourth_dc" style="position: relative;">
+                                                                        <input type="number" value="20" required  step="0.01" name="fourth_dc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>AC</td>
+                                                                    <td contenteditable="true" name="fifth_prize" style="position: relative;">
+                                                                        <input type="number" value="50" required  step="0.01" name="fifth_prize" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                                                    </td>
+                                                                    <td contenteditable="true" name="fifth_dc" style="position: relative;">
+                                                                        <input type="number" value="10" required  step="0.01" name="fifth_dc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>A</td>
+                                                                    <td contenteditable="true" name="guarantee_prize" style="position: relative;">
+                                                                        <input type="number" value="20" required  step="0.01" name="guarantee_prize" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                                                    </td>
+                                                                    <td contenteditable="true" name="guarantee_dc" style="position: relative;">
+                                                                        <input type="number" value="0" required  step="0.01" name="guarantee_dc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>B</td>
+                                                                    <td contenteditable="true" name="box_first_prize" style="position: relative;">
+                                                                        <input type="number" value="3000" required  step="0.01" name="box_first_prize" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                                                    </td>
+                                                                    <td contenteditable="true" name="box_first_prize_dc" style="position: relative;">
+                                                                        <input type="number" value="250" required  step="0.01" name="box_first_prize_dc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>C</td>
+                                                                    <td contenteditable="true" name="box_series_prize" style="position: relative;">
+                                                                        <input type="number" value="800" required  step="0.01" name="box_series_prize" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                                                    </td>
+                                                                    <td contenteditable="true" name="box_series_dc" style="position: relative;">
+                                                                        <input type="number" value="50" required  step="0.01" name="box_series_dc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;">
+                                                                    </td>
+                                                                </tr>
+                                                              
+                                                            </tbody>
+                                                        </table>
+                                                        <button  type="submit" class="btn btn-primary">submit</button>
+                                                   
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
+                                
+                                  
                                 </div>
                             </div>
                             
@@ -85,7 +139,7 @@
                                 <div class="col-lg-12">
                                     <div class="card">
                                         
-                                        <div class="body">
+                                       
                                             <div class="row clearfix">
                                                  <!-- <div class="col-lg-2 col-md-6 col-sm-12">
                                                     <div class="form-group">
@@ -99,14 +153,7 @@
                                                         </div>
                                                     </div>
                                                 </div> -->
-                                                <div class="col-lg-2 col-md-6 col-sm-12">
-                                                    <div class="form-group">
-                                                        <label class="fancy-checkbox"  > </label>
-                                                            <input type="checkbox" name="checkbox">
-                                                            <span><i class="icon-bell m-r-5"></i> Hide Zero content</span>
-                                                       
-                                                    </div>
-                                                </div>
+                                             
                                                 <div class="col-lg-2 col-md-6 col-sm-12">
                                                     <div class="form-group">
                                                         <label for="tax-id" class="control-label">Date</label>
@@ -134,10 +181,18 @@
                                                        
                                                     </div>
                                                 </div>
+                                                <div class="col-lg-2 col-md-6 col-sm-12">
+                                                    <div class="form-group">
+                                                        <label class="fancy-checkbox"  > </label>
+                                                            <input type="checkbox" name="checkbox">
+                                                            <span><i class=" m-r-5"></i> Hide Zero content</span>
+                                                       
+                                                    </div>
+                                                </div>
                                                
                                             </div>
                                         
-                                        <div class="body">
+                                        
                                             <div class="table-responsive">
                                                 <table class="table m-b-0">
                                                     <thead>
@@ -163,8 +218,8 @@
                                                     </tbody>
                                                 </table>
                                             </div>
-                                        </div>
-                                    </div>
+                                       
+                                  
                                     
                                 </div>
                             </div>
@@ -172,21 +227,9 @@
                             <div class="tab-pane" id="Contact-new3">
                                 <div class="col-lg-12">
                                     <div class="card">
-                                        
-                                        <div class="body">
+                                      
                                             <div class="row clearfix">
-                                                 <!-- <div class="col-lg-2 col-md-6 col-sm-12">
-                                                    <div class="form-group">
-                                                        <div class="body search">
-                                                            <div class="input-group ">
-                                                                <div class="input-group-prepend">
-                                                                    <span class="input-group-text"><i class="icon-magnifier"></i></span>
-                                                                </div>
-                                                                <input type="text" class="form-control" placeholder="Search...">                                    
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div> -->
+                                             
                                               
 
 
@@ -254,7 +297,7 @@
                                                     <div class="form-group">
                                                         <label class="fancy-checkbox"  > </label>
                                                             <input type="checkbox" name="checkbox">
-                                                            <span><i class="icon-bell m-r-5"></i> C</span>
+                                                            <span><i class=" m-r-5"></i> C</span>
                                                        
                                                     </div>
                                                 </div>
@@ -262,7 +305,7 @@
                                                 
                                            </div>
                                         
-                                        <div class="body">
+                                        
                                             
                                             <div class="table-responsive">
                                                 <!-- <table class="table m-b-0"> -->
@@ -272,7 +315,123 @@
                                                         <tr>
                                                             <th>#</th>
                                                             <th>Customer</th>
-                                                            <th>Ticket name</th>
+                                                            <th>Ticket</th>
+                                                            <th>No</th>
+                                                            <th> Count</th>
+                                                            <th>Limit</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>1</td>
+                                                            <td><span>Anu</span></td>
+                                                            <td><span class="text-info">Bowman </span></td>
+                                                            <td>2017</td>
+                                                            <td>1</td>
+                                                            <td>6 </td>
+                                                        </tr>
+                                                        
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                       
+                                  
+                                    
+                                </div>
+                            </div>
+                            </div>
+                            <div class="tab-pane" id="Contact-new4">
+                                <div class="col-lg-12">
+                                    <div class="card">
+                                      
+                                            <div class="row clearfix">
+                                             
+                                              
+
+
+                                                           
+                                             
+                                               
+                                            <div class="col-lg-2 col-md-6 col-sm-12">
+                                                <div class="form-group">
+                                                    <label for="tax-id" class="control-label">Sort Customer</label>
+                                                    <div class="mb-3">
+                                                        
+                                                        <select class="form-control show-tick ms select2" data-placeholder="Select">
+                                                            <option></option>
+                                                            <option>1</option>
+                                                            <option>2</option>
+                                                            <option>3</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                                <div class="col-lg-2 col-md-6 col-sm-12">
+                                                    <div class="form-group">
+                                                        <label for="tax-id" class="control-label">Date</label>
+                                                        <input type="date" value="2017-06-01" class="form-control">
+                                                    </div>        
+                                                </div>
+                                                
+                                                <div class="col-lg-2 col-md-6 col-sm-12">
+                                                    <div class="form-group">
+                                                        <label for="ssn" class="control-label">SSN</label>
+                                                        <br><button type="button" class="btn btn-primary">GO</button>
+                                                       
+                                                    </div>
+                                                </div>
+                                               
+                                            </div>
+                                            <div class="row clearfix">
+                                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                                    <div class="form-group">
+                                                        <label class="fancy-checkbox"  > </label>
+                                                            <input type="checkbox" name="checkbox">
+                                                            <span><i class=" m-r-5"></i> Hide Zero content</span>
+                                                       
+                                                    </div>
+                                                   </div>
+                                               
+                                    
+                                                <div class="col-lg-2 col-md-6 col-sm-12">
+                                                    <div class="form-group">
+                                                        <label class="fancy-checkbox"  > </label>
+                                                            <input type="checkbox" name="checkbox">
+                                                            <span><i class=" m-r-5"></i> A</span>
+                                                       
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-2 col-md-6 col-sm-12">
+                                                    <div class="form-group">
+                                                        <label class="fancy-checkbox"  > </label>
+                                                            <input type="checkbox" name="checkbox">
+                                                            <span><i class=" m-r-5"></i>B</span>
+                                                       
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-2 col-md-6 col-sm-12">
+                                                    <div class="form-group">
+                                                        <label class="fancy-checkbox"  > </label>
+                                                            <input type="checkbox" name="checkbox">
+                                                            <span><i class=" m-r-5"></i> C</span>
+                                                       
+                                                    </div>
+                                                </div>
+                                                
+                                                
+                                           </div>
+                                        
+                                        
+                                            
+                                            <div class="table-responsive">
+                                                <!-- <table class="table m-b-0"> -->
+                                                    <table class="table  able m-b-0table-bordered table-striped table-hover dataTable js-exportable">
+                                                        <thead>
+                                                    <thead>
+                                                        <tr>
+                                                            <th>#</th>
+                                                            <th>Customer</th>
+                                                            <th>Ticket</th>
                                                             <th>No</th>
                                                             <th> Count</th>
                                                             <th>Limit</th>
@@ -291,14 +450,130 @@
                                                     </tbody>
                                                 </table>
                                             </div>
-                                        </div>
-                                    </div>
+                                       
+                                  
+                                    
+                                </div>
+                            </div>
+                            </div>
+                            <div class="tab-pane" id="Contact-new5">
+                                <div class="col-lg-12">
+                                    <div class="card">
+                                      
+                                            <div class="row clearfix">
+                                             
+                                              
+
+
+                                                           
+                                             
+                                               
+                                            <div class="col-lg-2 col-md-6 col-sm-12">
+                                                <div class="form-group">
+                                                    <label for="tax-id" class="control-label">Sort Customer</label>
+                                                    <div class="mb-3">
+                                                        
+                                                        <select class="form-control show-tick ms select2" data-placeholder="Select">
+                                                            <option></option>
+                                                            <option>1</option>
+                                                            <option>2</option>
+                                                            <option>3</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                                <div class="col-lg-2 col-md-6 col-sm-12">
+                                                    <div class="form-group">
+                                                        <label for="tax-id" class="control-label">Date</label>
+                                                        <input type="date" value="2017-06-01" class="form-control">
+                                                    </div>        
+                                                </div>
+                                                
+                                                <div class="col-lg-2 col-md-6 col-sm-12">
+                                                    <div class="form-group">
+                                                        <label for="ssn" class="control-label">SSN</label>
+                                                        <br><button type="button" class="btn btn-primary">GO</button>
+                                                       
+                                                    </div>
+                                                </div>
+                                               
+                                            </div>
+                                            <div class="row clearfix">
+                                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                                    <div class="form-group">
+                                                        <label class="fancy-checkbox"  > </label>
+                                                            <input type="checkbox" name="checkbox">
+                                                            <span><i class=" m-r-5"></i> Hide Zero content</span>
+                                                       
+                                                    </div>
+                                                   </div>
+                                               
+                                    
+                                                <div class="col-lg-2 col-md-6 col-sm-12">
+                                                    <div class="form-group">
+                                                        <label class="fancy-checkbox"  > </label>
+                                                            <input type="checkbox" name="checkbox">
+                                                            <span><i class=" m-r-5"></i> A</span>
+                                                       
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-2 col-md-6 col-sm-12">
+                                                    <div class="form-group">
+                                                        <label class="fancy-checkbox"  > </label>
+                                                            <input type="checkbox" name="checkbox">
+                                                            <span><i class=" m-r-5"></i>B</span>
+                                                       
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-2 col-md-6 col-sm-12">
+                                                    <div class="form-group">
+                                                        <label class="fancy-checkbox"  > </label>
+                                                            <input type="checkbox" name="checkbox">
+                                                            <span><i class=" m-r-5"></i> C</span>
+                                                       
+                                                    </div>
+                                                </div>
+                                                
+                                                
+                                           </div>
+                                        
+                                        
+                                            
+                                            <div class="table-responsive">
+                                                <!-- <table class="table m-b-0"> -->
+                                                    <table class="table  able m-b-0table-bordered table-striped table-hover dataTable js-exportable">
+                                                        <thead>
+                                                    <thead>
+                                                        <tr>
+                                                            <th>#</th>
+                                                            <th>Customer</th>
+                                                            <th>Ticket</th>
+                                                            <th>No</th>
+                                                            <th> Count</th>
+                                                            <th>Limit</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>1</td>
+                                                            <td><span>syam</span></td>
+                                                            <td><span class="text-info">Bowman </span></td>
+                                                            <td>2017</td>
+                                                            <td>1</td>
+                                                            <td>6 </td>
+                                                        </tr>
+                                                        
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                       
+                                  
                                     
                                 </div>
                             </div>
                             </div>
                         </div>
-                    </div>
+                   
                 </div>
             </div>
         </div>
