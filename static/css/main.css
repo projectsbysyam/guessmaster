@@ -1764,7 +1764,7 @@
 }
 
 body {
-    background-color: #f4f7f6;
+    background-color: #ffffff;
     font-family: "Ubuntu", sans-serif;
     font-size: 14px;
     color: #5A5A5A;
@@ -2387,7 +2387,7 @@ html.fullscreen-bg #wrapper {
 
 .card .body {
     color: #444;
-    padding: 20px;
+    padding: 2px;
     font-weight: 400
 }
 
