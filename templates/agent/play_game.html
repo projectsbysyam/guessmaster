@@ -76,28 +76,28 @@
                             <div class="tab-content" style="padding: 10px !important;">
                                 <div class="tab-pane show active" id="tabSet1">
                                     <ul class="nav nav-tabs-new">
-                                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="">A</a></li>
-                                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="">B</a></li>
-                                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="">C</a></li>
-                                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="">ALL</a></li>
+                                        <li class="nav-item"><a class="nav-link" data-toggle="tab" id="A" href="">A</a></li>
+                                        <li class="nav-item"><a class="nav-link" data-toggle="tab" id="B" href="">B</a></li>
+                                        <li class="nav-item"><a class="nav-link" data-toggle="tab" id="C" href="">C</a></li>
+                                        <li class="nav-item"><a class="nav-link" data-toggle="tab" id="ALL1" href="">ALL</a></li>
                                     </ul>
                                 </div>
                                 <div class="tab-pane" id="tabSet2">
                                     <ul class="nav nav-tabs-new">
-                                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="">AB</a></li>
-                                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="">BC</a></li>
-                                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="">AC</a></li>
-                                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="">ALL</a></li>
+                                        <li class="nav-item"><a class="nav-link" data-toggle="tab" id="AB" href="">AB</a></li>
+                                        <li class="nav-item"><a class="nav-link" data-toggle="tab" id="BC" href="">BC</a></li>
+                                        <li class="nav-item"><a class="nav-link" data-toggle="tab" id="AC" href="">AC</a></li>
+                                        <li class="nav-item"><a class="nav-link" data-toggle="tab" id="ALL2" href="">ALL</a></li>
                                     </ul>
                                 </div>
                                 <div class="tab-pane" id="tabSet3">
                                     <ul class="nav nav-tabs-new">
-                                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="">Super</a>
+                                        <li class="nav-item"><a class="nav-link" data-toggle="tab" id="Super" href="">Super</a>
                                         </li>
                                         <li class="nav-item"><a class="nav-link" data-toggle="tab" id="ButtonBox" href="">Box</a></li>
                                         <li class="nav-item"><a class="nav-link" data-toggle="tab" id="KBox" href="">K.Box</a>
                                         </li>
-                                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="">Both</a></li>
+                                        <li class="nav-item"><a class="nav-link" data-toggle="tab" id="Both" href="">Both</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -123,9 +123,9 @@
                             <table id="mainTable" class="table table-hover" style="table-layout: fixed; width: 100%;">
                                 <thead>
                                     <tr>
-                                        <th colspan="2">Count: 500</th>
-                                        <th colspan="2">AMT: 5000.00</th>
-                                        <th colspan="2">TOT: 6000.00</th>
+                                        <th colspan="2">Count: <span id="totalCount">0</span></th>
+                                        <th colspan="2">AMT: <span id="totalAmount">0.00</span></th>
+                                        <th colspan="2">TOT: <span id="totalTotal">0.00</span></th>
                                     </tr>
                                     <tr>
                                         <th>LSK</th>
@@ -238,21 +238,21 @@ numberInput.addEventListener("input", function () {
         "Box": boxDC,
         "K.Box": boxDC
     }
-function calculateAndDisplay(linkText) {
+
+
+function createRowsForLink(linkText) {
     var number = parseFloat(document.getElementById("numberInput").value);
     var count = parseFloat(document.getElementById("countInput").value);
 
-        if (isNaN(number) || isNaN(count)) {
+    if (isNaN(number) || isNaN(count)) {
         console.log("Invalid input. Please enter valid numbers.");
-        return; 
+        return;
     }
 
-    var rate = amounts[linkText];
-    var dc = dcs[linkText];
-    var result1 = (count * rate).toFixed(2);
-    var result2 = (count * (rate + dc)).toFixed(2);
-
+    var tableBody = document.querySelector("#mainTable tbody");
     var newRow = document.createElement("tr");
+    var result1 = (count * amounts[linkText]).toFixed(2);
+    var result2 = (count * (amounts[linkText] + dcs[linkText])).toFixed(2);
 
     newRow.innerHTML = `
         <td>${linkText}</td>
@@ -263,61 +263,10 @@ function calculateAndDisplay(linkText) {
         <td><button type="button" class="btn btn-info" title="Edit"><i class="fa fa-edit"></i></button></td>
     `;
 
-    var tableBody = document.querySelector("#mainTable tbody");
     tableBody.appendChild(newRow);
+}
 
 
-    if (linkText === "ALL" && document.getElementById("tabSet1").classList.contains("show")) {
-        var allLinkTexts = ["A", "B", "C"];
-        allLinkTexts.forEach(function (allLink) {
-            if (allLink !== "ALL") {
-                var allRow = document.createElement("tr");
-                var allResult1 = (count * amounts[allLink]).toFixed(2);
-                var allResult2 = (count * (amounts[allLink] + dcs[allLink])).toFixed(2);
-                allRow.innerHTML = `
-                    <td>${allLink}</td>
-                    <td>${number}</td>
-                    <td>${count}</td>
-                    <td>${allResult1}</td>
-                    <td>${allResult2}</td>
-                    <td><button type="button" class="btn btn-info" title="Edit"><i class="fa fa-edit"></i></button></td>
-                `;
-                tableBody.appendChild(allRow);
-            }
-        });
-    }
-
-    if (linkText === "ALL" && document.getElementById("tabSet2").classList.contains("show")) {
-        var allLinkTexts = ["AB", "BC", "AC"];
-        allLinkTexts.forEach(function (allLink) {
-            if (allLink !== "ALL") {
-                var allRow = document.createElement("tr");
-                var allResult1 = (count * amounts[allLink]).toFixed(2);
-                var allResult2 = (count * (amounts[allLink] + dcs[allLink])).toFixed(2);
-                allRow.innerHTML = `
-                    <td>${allLink}</td>
-                    <td>${number}</td>
-                    <td>${count}</td>
-                    <td>${allResult1}</td>
-                    <td>${allResult2}</td>
-                    <td><button type="button" class="btn btn-info" title="Edit"><i class="fa fa-edit"></i></button></td>
-                `;
-                tableBody.appendChild(allRow);
-            }
-        });
-    }
-} 
-
-var tabLinks = document.querySelectorAll(".nav-link");
-tabLinks.forEach(function (link) {
-    link.addEventListener("click", function () {
-        calculateAndDisplay(link.textContent);
-        removeRowWithContent("ALL");
-        removeRowWithContent("K.Box");
-    });
-});
-
-calculateAndDisplay("A");
 
 function removeRowWithContent(content) {
     var table = document.querySelector("#mainTable");
@@ -395,9 +344,75 @@ document.getElementById("ButtonBox").addEventListener("click", function () {
         <td><button type="button" class="btn btn-info" title="Edit"><i class="fa fa-edit"></i></button></td>
         `;
         tableBody.appendChild(allRow);
+        updateTotal();
   });
 });
 
+</script>
+
+<script>
+    document.getElementById("ALL1").addEventListener("click", function () {
+    // Iterate over the links A, B, and C, and create rows for each
+    ["A", "B", "C"].forEach(function (linkText) {
+        createRowsForLink(linkText);
+    });
+    updateTotal();
+});
+</script>
+
+<script>
+    document.getElementById("ALL2").addEventListener("click", function () {
+    // Iterate over the links A, B, and C, and create rows for each
+    ["AB", "BC", "AC"].forEach(function (linkText) {
+        createRowsForLink(linkText);
+    });
+    updateTotal();
+});
+</script>
+
+<script>
+    document.getElementById("Both").addEventListener("click", function () {
+        var number = parseFloat(document.getElementById("numberInput").value);
+        var count = parseFloat(document.getElementById("countInput").value);
+
+        if (isNaN(number) || isNaN(count)) {
+            console.log("Invalid input. Please enter valid numbers.");
+            return;
+        }
+
+        var tableBody = document.querySelector("#mainTable tbody");
+
+        // Create a row for "Super"
+        var superRow = document.createElement("tr");
+        var superResult1 = (count * amounts["Super"]).toFixed(2);
+        var superResult2 = (count * (amounts["Super"] + dcs["Super"])).toFixed(2);
+        superRow.innerHTML = `
+            <td>Super</td>
+            <td>${number}</td> <!-- Leave the combination cell empty -->
+            <td>${count}</td>
+            <td>${superResult1}</td>
+            <td>${superResult2}</td>
+            <td><button type="button" class="btn btn-info" title="Edit"><i class="fa fa-edit"></i></button></td>
+        `;
+
+        // Create a row for "Box"
+        var boxRow = document.createElement("tr");
+        var boxResult1 = (count * amounts["Box"]).toFixed(2);
+        var boxResult2 = (count * (amounts["Box"] + dcs["Box"])).toFixed(2);
+        boxRow.innerHTML = `
+            <td>Box</td>
+            <td>${number}</td> <!-- Leave the combination cell empty -->
+            <td>${count}</td>
+            <td>${boxResult1}</td>
+            <td>${boxResult2}</td>
+            <td><button type="button" class="btn btn-info" title="Edit"><i class="fa fa-edit"></i></button></td>
+        `;
+
+        // Append both rows to the table
+        tableBody.appendChild(superRow);
+        tableBody.appendChild(boxRow);
+        updateTotal();
+    });
 </script>
 
 
@@ -429,9 +444,233 @@ document.getElementById("ButtonBox").addEventListener("click", function () {
         // Add the new row to the table
         var tableBody = document.querySelector("#mainTable tbody");
         tableBody.appendChild(newRow);
+        updateTotal();
     });
     </script>
     
+    <script>
+        document.getElementById("A").addEventListener("click", function () {
+            var number = parseFloat(document.getElementById("numberInput").value);
+            var count = parseFloat(document.getElementById("countInput").value);
+        
+            if (isNaN(number) || isNaN(count)) {
+                console.log("Invalid input. Please enter valid numbers.");
+                return;
+            }
+        
+            var linkText = "A"; // Set the linkText to "Box"
+            
+            // Create a new row for "Box"
+            var newRow = document.createElement("tr");
+            var result1 = (count * amounts[linkText]).toFixed(2);
+            var result2 = (count * (amounts[linkText] + dcs[linkText])).toFixed(2);
+            newRow.innerHTML = `
+                <td>${linkText}</td>
+                <td>${number}</td>
+                <td>${count}</td>
+                <td>${result1}</td>
+                <td>${result2}</td>
+                <td><button type="button" class="btn btn-info" title="Edit"><i class="fa fa-edit"></i></button></td>
+            `;
+            
+            // Add the new row to the table
+            var tableBody = document.querySelector("#mainTable tbody");
+            tableBody.appendChild(newRow);
+            updateTotal()
+        });
+        </script>
+
+<script>
+    document.getElementById("B").addEventListener("click", function () {
+        var number = parseFloat(document.getElementById("numberInput").value);
+        var count = parseFloat(document.getElementById("countInput").value);
+    
+        if (isNaN(number) || isNaN(count)) {
+            console.log("Invalid input. Please enter valid numbers.");
+            return;
+        }
+    
+        var linkText = "B"; // Set the linkText to "Box"
+        
+        // Create a new row for "Box"
+        var newRow = document.createElement("tr");
+        var result1 = (count * amounts[linkText]).toFixed(2);
+        var result2 = (count * (amounts[linkText] + dcs[linkText])).toFixed(2);
+        newRow.innerHTML = `
+            <td>${linkText}</td>
+            <td>${number}</td>
+            <td>${count}</td>
+            <td>${result1}</td>
+            <td>${result2}</td>
+            <td><button type="button" class="btn btn-info" title="Edit"><i class="fa fa-edit"></i></button></td>
+        `;
+        
+        // Add the new row to the table
+        var tableBody = document.querySelector("#mainTable tbody");
+        tableBody.appendChild(newRow);
+        updateTotal()
+    });
+    </script>
+
+<script>
+    document.getElementById("C").addEventListener("click", function () {
+        var number = parseFloat(document.getElementById("numberInput").value);
+        var count = parseFloat(document.getElementById("countInput").value);
+    
+        if (isNaN(number) || isNaN(count)) {
+            console.log("Invalid input. Please enter valid numbers.");
+            return;
+        }
+    
+        var linkText = "C"; // Set the linkText to "Box"
+        
+        // Create a new row for "Box"
+        var newRow = document.createElement("tr");
+        var result1 = (count * amounts[linkText]).toFixed(2);
+        var result2 = (count * (amounts[linkText] + dcs[linkText])).toFixed(2);
+        newRow.innerHTML = `
+            <td>${linkText}</td>
+            <td>${number}</td>
+            <td>${count}</td>
+            <td>${result1}</td>
+            <td>${result2}</td>
+            <td><button type="button" class="btn btn-info" title="Edit"><i class="fa fa-edit"></i></button></td>
+        `;
+        
+        // Add the new row to the table
+        var tableBody = document.querySelector("#mainTable tbody");
+        tableBody.appendChild(newRow);
+        updateTotal()
+    });
+    </script>
+
+<script>
+    document.getElementById("AB").addEventListener("click", function () {
+        var number = parseFloat(document.getElementById("numberInput").value);
+        var count = parseFloat(document.getElementById("countInput").value);
+    
+        if (isNaN(number) || isNaN(count)) {
+            console.log("Invalid input. Please enter valid numbers.");
+            return;
+        }
+    
+        var linkText = "AB"; // Set the linkText to "Box"
+        
+        // Create a new row for "Box"
+        var newRow = document.createElement("tr");
+        var result1 = (count * amounts[linkText]).toFixed(2);
+        var result2 = (count * (amounts[linkText] + dcs[linkText])).toFixed(2);
+        newRow.innerHTML = `
+            <td>${linkText}</td>
+            <td>${number}</td>
+            <td>${count}</td>
+            <td>${result1}</td>
+            <td>${result2}</td>
+            <td><button type="button" class="btn btn-info" title="Edit"><i class="fa fa-edit"></i></button></td>
+        `;
+        
+        // Add the new row to the table
+        var tableBody = document.querySelector("#mainTable tbody");
+        tableBody.appendChild(newRow);
+        updateTotal()
+    });
+    </script>
+
+<script>
+    document.getElementById("BC").addEventListener("click", function () {
+        var number = parseFloat(document.getElementById("numberInput").value);
+        var count = parseFloat(document.getElementById("countInput").value);
+    
+        if (isNaN(number) || isNaN(count)) {
+            console.log("Invalid input. Please enter valid numbers.");
+            return;
+        }
+    
+        var linkText = "BC"; // Set the linkText to "Box"
+        
+        // Create a new row for "Box"
+        var newRow = document.createElement("tr");
+        var result1 = (count * amounts[linkText]).toFixed(2);
+        var result2 = (count * (amounts[linkText] + dcs[linkText])).toFixed(2);
+        newRow.innerHTML = `
+            <td>${linkText}</td>
+            <td>${number}</td>
+            <td>${count}</td>
+            <td>${result1}</td>
+            <td>${result2}</td>
+            <td><button type="button" class="btn btn-info" title="Edit"><i class="fa fa-edit"></i></button></td>
+        `;
+        
+        // Add the new row to the table
+        var tableBody = document.querySelector("#mainTable tbody");
+        tableBody.appendChild(newRow);
+        updateTotal()
+    });
+    </script>
+
+<script>
+    document.getElementById("AC").addEventListener("click", function () {
+        var number = parseFloat(document.getElementById("numberInput").value);
+        var count = parseFloat(document.getElementById("countInput").value);
+    
+        if (isNaN(number) || isNaN(count)) {
+            console.log("Invalid input. Please enter valid numbers.");
+            return;
+        }
+    
+        var linkText = "AC"; // Set the linkText to "Box"
+        
+        // Create a new row for "Box"
+        var newRow = document.createElement("tr");
+        var result1 = (count * amounts[linkText]).toFixed(2);
+        var result2 = (count * (amounts[linkText] + dcs[linkText])).toFixed(2);
+        newRow.innerHTML = `
+            <td>${linkText}</td>
+            <td>${number}</td>
+            <td>${count}</td>
+            <td>${result1}</td>
+            <td>${result2}</td>
+            <td><button type="button" class="btn btn-info" title="Edit"><i class="fa fa-edit"></i></button></td>
+        `;
+        
+        // Add the new row to the table
+        var tableBody = document.querySelector("#mainTable tbody");
+        tableBody.appendChild(newRow);
+        updateTotal()
+    });
+    </script>
+
+<script>
+    document.getElementById("Super").addEventListener("click", function () {
+        var number = parseFloat(document.getElementById("numberInput").value);
+        var count = parseFloat(document.getElementById("countInput").value);
+    
+        if (isNaN(number) || isNaN(count)) {
+            console.log("Invalid input. Please enter valid numbers.");
+            return;
+        }
+    
+        var linkText = "Super"; // Set the linkText to "Box"
+        
+        // Create a new row for "Box"
+        var newRow = document.createElement("tr");
+        var result1 = (count * amounts[linkText]).toFixed(2);
+        var result2 = (count * (amounts[linkText] + dcs[linkText])).toFixed(2);
+        newRow.innerHTML = `
+            <td>${linkText}</td>
+            <td>${number}</td>
+            <td>${count}</td>
+            <td>${result1}</td>
+            <td>${result2}</td>
+            <td><button type="button" class="btn btn-info" title="Edit"><i class="fa fa-edit"></i></button></td>
+        `;
+        
+        // Add the new row to the table
+        var tableBody = document.querySelector("#mainTable tbody");
+        tableBody.appendChild(newRow);
+        updateTotal()
+    });
+    </script>
 
 <script>
     document.getElementById("button1").addEventListener("click", function () {
@@ -452,6 +691,33 @@ document.getElementById("ButtonBox").addEventListener("click", function () {
         document.getElementById("tabSet3").classList.add("show", "active");
     });
 </script>
+
+<script>
+    function updateTotal(){
+        var table = document.getElementById("mainTable");
+        var rows = table.querySelectorAll("tbody tr");
+        var countValues = [];
+        rows.forEach(function (row) {
+            var countCell = row.cells[2]; // Assuming "count" is in the third cell (index 2)
+            var count = parseFloat(countCell.textContent);
+            
+            // Check if the count is a valid number before adding it to the array
+            if (!isNaN(count)) {
+                countValues.push(count);
+            }
+        });
+        console.log(countValues)
+        var total = countValues.reduce(function (accumulator, currentValue) {
+            return accumulator + currentValue;
+        }, 0); // Initialize accumulator with 0
+
+        var totalCountSpan = document.getElementById("totalCount");
+        totalCountSpan.textContent = total;
+
+        console.log("Total Count:", total);
+    }
+</script>
+
 
 
 {% endblock %}
